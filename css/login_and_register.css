@@ -1,0 +1,103 @@
+@import url("DancingScript_Regular/stylesheet.css");
+@import url("DancingScript_Bold/stylesheet.css");
+
+html {
+    background: url(../images/login_background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    padding-top: 20px;
+    font-size: 16px;
+    font-family: "微软雅黑", serif;
+    background: transparent;
+}
+
+.panel {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.title {
+    font-size: 8em;
+    font-family: "DancingScript Bold", serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.center {
+    display: table;
+    margin: auto;
+}
+
+.font-white {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.border-right {
+    border-right: 1px #B0C4DE solid;
+}
+
+.border-left {
+    border-left: 1px #B0C4DE solid;
+}
+
+.bg-clear {
+    background: transparent;
+}
+
+.border-clear {
+    border: transparent;
+}
+
+.margin-clear-horizontal {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.padding-clear-horizontal {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+a:hover, a:link, a:visited, a:active {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.text-form {
+    font-size: 0.8em;
+    font-weight: lighter;
+}
+
+.btn-height-default {
+    height: 2.5em;
+}
+
+.triangle-border-up {
+    width: 0;
+    height: 0;
+    border-width: 0 1em 1em;
+    border-style: solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.8); /*透明 透明  灰*/
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+
+a:visited, a:active {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+a:hover, .glow {
+    color: #FFF;
+    text-shadow: 0 0 10px #FFF;
+}

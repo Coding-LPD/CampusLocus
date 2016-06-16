@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Campus Locus</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/login_and_register.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+</head>
+<body>
+<h1 class="title text-center font-white">Campus Locus</h1>
+<p class="text-center font-white">记录人生轨迹的每个瞬间</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 panel padding-clear-horizontal" style="height: 3em; margin-bottom: 1em; margin-top: 1em">
+            <div class="col-md-6 center">
+                <nav class="navbar navbar-default bg-clear border-clear" role="navigation">
+                    <div class="center">
+                        <ul class="nav navbar-nav">
+                            <li class="font-white"><a class="glow" href="login.html" style="color: rgba(255,255,255,0.8);"><strong>登录</strong></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-6 margin-clear">
+                <nav class="navbar navbar-default bg-clear border-clear" role="navigation">
+                    <div class="center">
+                        <ul class="nav navbar-nav">
+                            <li class="font-white"><a href="register.html" style="color: rgba(255,255,255,0.8);">注册</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1 col-lg-offset-4">
+        <div class="triangle-border-up center"></div></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 panel" style="margin-top: 0;">
+            <div class="col-md-7">
+                <form role="form">
+                    <div class="form-group">
+                        <label class="font-white text-form" style="margin-top: 2em;"
+                               for="username">使用轨迹账号/手机号码登陆</label>
+                        <br/>
+                        <input class="form-control bg-clear" style="margin-top: 0.8em;" id="username" type="text"
+                               placeholder="轨迹账号/手机号码"/>
+                        <input class="form-control bg-clear" style="margin-top: 0.6em;" id="password" type="password"
+                               placeholder="密码"/>
+                        <button class="btn btn-warning bg-clear border-clear" id="login-btn"
+                                style="width: 100%; background-color: #EFE737; margin-top: 0.6em;">登录
+                        </button>
+                        <input type="checkbox" class="bg-clear" style="margin-top: 0.6em; background: transparent;"/>
+                        <label class="font-white text-form" style="margin-top: 0.8em;">记住密码</label>
+                        <a href="#" class="font-white text-form" style="float: right;margin-top: 0.8em;">忘记密码</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <form role="form">
+                    <div class="form-group">
+                        <label class="font-white text-form" style="margin-top: 2em">使用社交账号登陆</label>
+                        <button class="btn btn-warning bg-clear border-clear btn-height-default"
+                                style="width: 100%; height:2.6em; background-color: #308EB5; margin-top: 2.2em;">
+                            <img src="images/qq.png" style="float: left;"/>
+                            <div  class="border-left" style="margin-left: 20%; height: 1.8em;">Q Q登录</div>
+                        </button>
+                        <button class="btn btn-warning bg-clear border-clear btn-height-default"
+                                style="width: 100%; height:2.6em; background-color: #7FA900; margin-top: 0.6em;">
+                            <img src="images/wechat.png" style="float: left;"/>
+                            <div  class="border-left" style="margin-left: 20%; height: 1.8em;">微信登录</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+
+<script src="js/lib/bmob/bmob.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/string_helper.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

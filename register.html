@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register - Campus Locus</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/login_and_register.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+</head>
+<body>
+<h1 class="title text-center font-white">Campus Locus</h1>
+<p class="text-center font-white">记录人生轨迹的每个瞬间</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 panel padding-clear-horizontal"
+             style="height: 3em; margin-bottom: 1em; margin-top: 1em">
+            <div class="col-md-6 center">
+                <nav class="navbar navbar-default bg-clear border-clear" role="navigation">
+                    <div class="center">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="login.html" style="color: rgba(255,255,255,0.8);">登录</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-6 margin-clear">
+                <nav class="navbar navbar-default bg-clear border-clear" role="navigation">
+                    <div class="center">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a class="glow" href="register.html"
+                                                        style="color: rgba(255,255,255,0.8);"><strong>注册</strong></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1 col-lg-offset-7">
+            <div class="triangle-border-up center"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 panel" style="margin-top: 0;padding-bottom: 1em">
+            <div class="col-md-7">
+                <form role="form">
+                    <div class="form-group">
+                        <label class=" text-form font-white" style="margin-top: 2em;"
+                               for="mobilenumber">使用手机号码注册</label>
+                        <br/>
+
+                        <div style="width: 82%; float: left;">
+                            <input class="form-control bg-clear" style="margin-top: 0.8em;" id="mobilenumber"
+                                   type="text"
+                                   placeholder="手机号码"/>
+                            <input class="form-control bg-clear" style="margin-top: 0.45em;" id="verification"
+                                   type="text"
+                                   placeholder="验证码"/></div>
+
+                            <button class="btn btn-default bg-clear font-white" style="font-size: 0.5em; margin-top: 0.8em; margin-left: 1.2em">
+                                <div style="line-height: 1em;">获</br />取<br />验<br />证<br />码</div>
+                            </button>
+
+                        <button class="btn btn-warning bg-clear border-clear"
+                                style="width: 100%; background-color: #EFE737; margin-top: 0.6em;">注册
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-md-5">
+                <form role="form">
+                    <div class="form-group">
+                        <label class=" text-form font-white" style="margin-top: 2em">使用社交账号注册</label>
+                        <button class="btn btn-warning bg-clear border-clear btn-height-default"
+                                style="width: 100%; height: 2.6em; background-color: #308EB5; margin-top: 2.2em;">
+                            <img src="images/qq.png" style="float: left;"/>
+                            <div class="border-left" style="margin-left: 20%; height: 1.8em;">Q Q注册</div>
+                        </button>
+                        <button class="btn btn-warning bg-clear border-clear btn-height-default"
+                                style="width: 100%; height:2.6em; background-color: #7FA900; margin-top: 0.6em;">
+                            <img src="images/wechat.png" style="float: left;"/>
+                            <div class="border-left" style="margin-left: 20%; height: 1.8em;">微信注册</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
