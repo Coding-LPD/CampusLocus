@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/modify.css" rel="stylesheet">
+    <link href="images/logo_28px.png" rel="shortcut icon">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,15 +19,104 @@
     <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 </head>
 <body>
-<div class="panel margin-clear padding-clear" style="height: 3em; width: 100%;" >
-    <div class="margin-clear margin-left padding-clear border" style="background: rgb(255,248,95); height: 3em; width: 6.25%;">
-        <label  class="padding-clear border" style="font-size: 14px; margin-top: 100%; margin-right: 100%">轨迹完善</label>
+
+<div id="navbar" class="panel margin-clear padding-clear height-navbar width-full" style="border-radius: 0;">
+    <div class="margin-clear padding-clear margin-left width-navbar height-navbar campus-complete inline-block">
+        <label class="padding-clear font-navbar">
+            轨迹完善<img src="images/pen.png"/>
+        </label>
+    </div>
+    <div class="padding-clear width-navbar return-index inline-block">
+        <!--a设置inline-block后成为块级元素，可以包含img-->
+        <a  id="index" href="index.html" class="font-navbar inline-block index" onmouseover="indexMouseOver()" onmouseout="indexMouseOut()">
+            <img id="home_cut" src="images/home.png"/>&nbsp;返回首页
+        </a>
     </div>
 </div>
+
+<div class="margin-clear padding-clear height-menu width-full" style="margin-bottom: 0em">
+
+    <div class="modify-unselected inline-block" style="margin-left: 59%">
+        <a href="modify_ability.html">才艺才能</a>
+    </div>
+    <div class="modify-unselected inline-block" style="margin-left: 5%">
+        <a href="modify_work.html">工作实习</a>
+    </div>
+    <div class="modify-selected center">
+        <a href="modify_personal.html" style="color: rgb(255,204,0);">个人信息</a>
+    </div>
+</div>
+
+<div style="position: relative;">
+    <div class="padding-clear dot-small margin-left"></div>
+    <div class="margin-clear padding-clear dot-big center"></div>
+</div>
+
+<div class="pagebody">
+    <button type="button" id="button_preview" class="button-preview-inactive inline-block"></button>
+    <div class="head-protrait inline-block">
+        <img id="head_image" src="" onerror="javascript:this.src='images/head_protrait.png'"/>
+    </div>
+    <form class="form-font form-personal inline-block">
+        <label class="label-personal" for="locusid">轨迹ID：</label>
+        <label id="locusid" class="label-userimfo-personal">xxxxxxxx</label>
+        <button type="button" id="button_edit" class="button-edit-personal"
+                onmouseout="editMouseOut()" onmouseover="editMouseOver()" onclick="window.location='modify_personal_edit.html'"></button>
+        <br />
+        <label class="label-personal" for="username">&nbsp;&nbsp;&nbsp;姓名：</label>
+        <label id="username" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="usersex">性别：</label>
+        <label id="usersex" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="userage">年龄：</label>
+        <label id="userage" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="usermobile">手机号码：</label>
+        <label id="usermobile" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="useremail">邮箱：</label>
+        <label id="useremail" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="usercollege">学校：</label>
+        <label id="usercollege" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="userschool">学院：</label>
+        <label id="userschool" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="usermajor">专业：</label>
+        <label id="usermajor" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="userhobby">爱好：</label>
+        <label id="userhobby" class="label-userimfo-personal"></label>
+        <br />
+        <br />
+    </form>
+    <button type="button" id="button_next" class="button-next-active inline-block" onmousedown="nextMouseDown()" onmouseup="nextMouseUp()"
+            onclick="window.location='modify_ability.html'"></button>
+</div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
+<script src="lib/bmob/bmob-min.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/helper.js"></script>
+<script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_personal.js"></script>
+
+<script>
+    function editMouseOut() {
+        document.getElementById("button_edit").style.background = "url('images/edit.png')";
+    }
+
+    function editMouseOver() {
+        document.getElementById("button_edit").style.background = "url('images/edit_click.png')";
+        document.getElementById("button_edit").title = "编辑";
+    }
+</script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

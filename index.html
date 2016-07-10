@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="copyright" content="2016 campus locus All Rights Reserved.">
+    <title>index</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/index/index.css" rel="stylesheet">
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav">
+            <img class="logo" src="images/Logo.png" />
+            <button type="button" class="menu-link yellow-btn"></button>
+        </div>
+        <div class="guide">
+            <h1 class="title">Campus Locus</h1>
+            <div class="search-box">
+                <button type="button" class="search-btn  v-center"></button>
+                <input type="text" class="search" placeholder="找工作实习试试"/>
+            </div>
+        </div>
+        <div class="menu hide">
+            <h1 class="title">Campus Locus</h1>
+            <ul class="menu-btn-list">
+                <li><a href="#">首页</a><hr /></li>
+                <li><a href="modify_personal.html">个人资料</a><hr /></li>
+                <li><a href="index_record.html">交流记录</a><hr /></li>
+                <li><a href="index_post.html">干货</a><hr /></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="main-panel">
+            <ul class="category-list">
+                <li class="selected" value="0"><a href="#">精选</a></li>
+                <li value="1"><a href="#">才艺才能</a></li>
+                <li value="2"><a href="#">实习工作</a></li>
+                <li value="3"><a href="#">社团经历</a></li>
+            </ul>
+            <div class="data-tip" id="record-data-tip">
+                <button class="load-more load-more-btn hide" type="button">加载更多 &nbsp;&nbsp; ></button>
+                <div class="no-more-data-tip hide">全部加载完毕</div>
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>                    
+            <!--<div class="item">
+                <div class="author-info">
+                    <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
+                    <p class="author-name">木子李</p>
+                </div>
+                <div class="locus">
+                    <button type="button" class="forward-btn  v-center"></button>
+                    <div class="timeline">
+                        <div class="big-point  v-center"></div>
+                        <hr class="v-center" />
+                        <div class="record  record-up  v-center">
+                            <div class="record-brief">
+                                <div class="title-bg title-bg-purple"></div>
+                                <p class="record-title">春之歌</p>
+                                <img class="touch-img  hide" src="images/touch.png" />
+                                <div class="record-description  purple-bg">
+                                    <div class="description-title">春之歌</div>
+                                    <div class="description-content text-ellipsis">春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！</div>
+                                </div>
+                            </div>
+                            <div class="small-point  purple-bg"></div>
+                            <p class="record-time">2016-06-04</p>
+                        </div>
+                    </div>
+                    <button type="button" class="backward-btn  v-center"></button>
+                </div>
+            </div>-->
+        </div>
+        <div class="user-panel">
+            <div class="user-info">
+                <img id="user-head-img" class="v-center" src="" onerror="javascript:this.src='images/head.png'" />
+                <p id="user-name">木子李</p>
+            </div>
+            <ul class="user-btn-list">
+                <li><a class="ask" href="#">请教</a><div id="ask-record">2</div></li>
+                <li><a class="chat" href="#">协作交流</a><div id="chat-record">3</div></li>
+                <li><a class="praise" href="#">点赞</a><div id="praise-record">5</div></li>
+                <li><a class="publish" href="#">发表文章</a><div id="publish-record">5</div></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="content">
+            <div class="product-info">
+                <div class="about">
+                    <h4 class="title">关于校园轨迹网</h4>
+                    <p class="about-content">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+                </div>
+                <div class="contact">
+                    <h4 class="title">联系我们</h4>
+                    <ul class="contact-list">
+                        <li>客服邮箱：<span class="value">xxxx@163.com</span></li>
+                        <li>商务合作：<span class="value">xxxx@163.com</span></li>
+                        <li>客服QQ：<span class="value">xxxx@163.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feedback">
+                <h4 class="title">意见反馈</h4>
+                <form class="feedback-form">
+                    <ul>
+                        <li>
+                            <label for="feedback-title">标题：</label>
+                            <input type="text" id="feedback-title" />
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <label for="user-id">用户ID：</label>
+                            <input type="text" id="user-id" />
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <label for="feedback-content">反馈内容：</label>
+                            <textarea id="feedback-content" rows="5"></textarea>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <button type="button" class="submit-btn yellow-btn" id="feedback-submit-btn">确认提交</button>
+                        </li>
+                    </ul>    
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <hr />
+        <h5 class="copyright">Copyright &copy; 2016 campus locus All Rights Reserved.</h5>
+    </div>
+
+    <div class="pop-up">
+        <button type="button" class="close-btn" id="pop-up-close-btn"></button>
+        <div class="record-detail-box">
+            <div class="author-info">
+                <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
+                <p class="record-time">2016-05-12</p>
+                <div class="record-base-info">
+                    <p class="author-name">木子李</p>
+                    <p class="record-title">春之歌</p>
+                </div>                
+            </div>
+            <div class="record-detail">
+                <p class="record-description">
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                    春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
+                </p>
+                <div class="record-extra-info">
+                    <div class="record-label">才艺才能</div>
+                    <ul class="action-list">
+                        <li><button type="button" class="ask">请教</button></li>
+                        <li><button type="button" class="chat">协作交流</button></li>
+                        <li><button type="button" class="praise"></button></li>    
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="gray-up-triangle"></div>
+                <div class="action-panel gray-bg">
+                    <div class="publish-box">
+                        <input type="text" class="publish-text" id="publish-text" />
+                        <button type="button" class="publish-btn yellow-btn">发表</button>
+                    </div>
+                    <ul class="message-list">
+                        <li class="message-item">
+                            <img class="publisher-head-img" src="" onerror="javascript:this.src='images/head.png'" />
+                            <div class="message-body">
+                                <p class="message-content">
+                                    <span class="publisher"><span id="publisher-name">木子李</span>：</span>
+                                    巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙
+                                    巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙巴拉拉小魔仙
+                                </p>
+                                <div class="message-extra">
+                                    <div class="publish-time">2016-04-05 22:00</div>
+                                    <ul class="action-list">
+                                        <li><button type="button" class="reply">回复</button></li>
+                                        <li><button type="button" class="praise"></button></li>    
+                                    </ul>
+                                    <div class="clear"></div> 
+                                </div>                         
+                            </div>                            
+                        </li>
+                        <li class="reply-item">
+                            <div class="publish-box">
+                                <input type="text" class="publish-text" id="reply-text" placeholder="回复木子李" />
+                                <button type="button" class="publish-btn yellow-btn">发表</button>
+                            </div>
+                        </li>
+                        <li class="message-item">
+                            <button type="button" class="load-more">加载更多>></button>
+                        </li>
+                    </ul>                   
+                </div>                   
+            </div>
+        </div>
+    </div>
+
+    <div class="cover menu-cover hide"></div>
+    <div class="cover pop-up-cover"></div>
+
+    <!-- Template -->
+
+    <!-- item -->
+    <script type="text/html" id="tp-item">
+        <div class="item">
+            <div class="author-info">
+                <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
+                <p class="author-name">{0}</p>
+            </div>
+            <div class="locus">
+                <button type="button" class="backward-btn  v-center"></button>
+                <button type="button" class="foreward-btn  v-center"></button>
+            </div>
+        </div>
+        <hr class="gray-gradient"/>
+    </script>
+
+    <!-- record-up -->
+    <script type="text/html" id="tp-record-up">
+        <div class="record  record-up  v-center">
+            <div class="record-brief">
+                <div class="title-bg title-bg-{3}"></div>
+                <p class="record-title">{0}</p>
+                <img class="touch-img  hide" src="images/touch.png" />
+                <div class="record-description  {3}-bg">
+                    <div class="description-title">{0}</div>
+                    <div class="description-content text-ellipsis">{1}</div>
+                </div>
+            </div>
+            <div class="small-point  {3}-bg"></div>
+            <p class="record-time">{2}</p>
+        </div>
+    </script>
+
+    <!-- record-down -->
+    <script type="text/html" id="tp-record-down">
+        <div class="record  record-down  v-center">
+            <p class="record-time">{2}</p>
+            <div class="small-point  {3}-bg"></div>
+            <div class="record-brief">
+                <div class="title-bg title-bg-{3}"></div>
+                <p class="record-title">{0}</p>
+                <img class="touch-img  hide" src="images/touch.png" />
+                <div class="record-description  {3}-bg">
+                    <div class="description-title">{0}</div>
+                    <div class="description-content text-ellipsis">{1}</div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/lib/bmob/bmob-min.js"></script>
+    <script src="js/utils/helper.js"></script>
+    <script src="js/config/bmob_base.js"></script>    
+    <script src="js/index/index_effect.js"></script>
+    <script src="js/index/index.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+
+</html>

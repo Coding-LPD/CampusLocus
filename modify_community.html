@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Community - Campus Locus</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/modify.css" rel="stylesheet">
+    <link href="images/logo_28px.png" rel="shortcut icon">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+</head>
+<body>
+
+<div id="navbar" class="panel margin-clear padding-clear height-navbar width-full" style="border-radius: 0;">
+    <div class="margin-clear padding-clear margin-left width-navbar height-navbar campus-complete inline-block">
+        <label class="padding-clear font-navbar">
+            轨迹完善<img src="images/pen.png"/>
+        </label>
+    </div>
+    <div class="padding-clear width-navbar return-index inline-block">
+        <!--a设置inline-block后成为块级元素，可以包含img-->
+        <a  id="index" href="index.html" class="font-navbar inline-block index" onmouseover="indexMouseOver()" onmouseout="indexMouseOut()">
+            <img id="home_cut" src="images/home.png"/>&nbsp;返回首页
+        </a>
+    </div>
+</div>
+
+<div class="margin-clear padding-clear height-menu width-full" style="margin-bottom: 0em">
+    <div class="modify-unselected inline-block" style="margin-left: 26.4%">
+        <a href="modify_ability.html">才艺才能</a>
+    </div>
+    <div class="modify-unselected inline-block" style="margin-left: 5%">
+        <a href="modify_work.html">工作实习</a>
+    </div>
+    <div class="modify-selected center">
+        <a href="modify_community.html" style="color: rgb(255,204,0);">社团经历</a>
+    </div>
+</div>
+
+<div style="position: relative;">
+    <div class="padding-clear dot-small margin-left"></div>
+    <div class="margin-clear padding-clear dot-big center"></div>
+</div>
+
+<div class="pagebody">
+    <button type="button" id="button_preview" class="button-preview-active inline-block"
+            onmousedown="previewMouseDown()" onmouseup="previewMouseUp()" onclick="window.location='modify_work.html'"></button>
+
+    <div class="empty-ability margin-clear">
+        <img src="images/empty.png" />
+        <span class="gray">您当前内容为空，快去添加一些经历吧！</span>
+        <img src="images/arrow.png" style="vertical-align: top;" />
+    </div>
+
+    <button type="button" id="button_add" class="button-add-ability"
+            onmousedown="addMouseDown()" onmouseup="addMouseUp()" onclick="window.location='modify_community_add.html'"></button>
+
+    <button type="button" id="button_next" class="button-next-inactive inline-block"></button>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+
+<script src="js/modify.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+*{
+    margin:0;padding:0;
+}
+
+#footer{
+    position: relative;top:500px;
+    width:100%;
+    height: 280px;
+    background-image: url("../images/footer_bg.png");
+}
+
+#footer_bg{
+    display: block;
+    position:relative;
+    top:0px;
+    width:100%;
+    height:30%;
+    background-image: url("../images/footer_bg.png");
+}
+#footer_logo{
+    z-index:2;
+    width:70px;
+    height:70px;
+    background: url("../images/Logo.png") no-repeat;
+    position:absolute;top:15%;
+}
+.center {
+    display:table;
+    margin-left:auto;
+    margin-right:auto;
+}
+hr{
+    height:1px;width:60%;border:none;border-top:1px dashed #b4b4b4;
+    position: absolute;left:20%;bottom:9%;
+    color:#ababab;
+}
+#footer_table{
+    position: absolute;left: 20%;
+    height:50%;
+}
+#copyright{
+    z-index: 2;
+    color:#b4b4b4;
+    position: absolute;
+    bottom:13px;left: 42%;
+}
+.footer_left{
+    position: absolute;
+    left:20%;
+}
+.footer_info{
+    position: absolute;top:15px;
+}
+.font_15{
+    font-size: 15px;
+}
+.font_10{
+    font-size:10px;
+}
+#footer_aboutus{
+    position: absolute;  top:15%;
+}
+#footer_contactus {
+    position: absolute;
+    top: 50%;
+}
+#footer_table{
+    position: absolute;left: 60%;
+    border-color: #ababab;
+}
+.black{
+    color:black;
+}
+.ababab{
+    background-color:#ababab;
+}
+.table_pos{
+    position: absolute;top:7%;
+}
+.padding4{
+    padding-top: 2px;
+}
+.footer_input{
+    height: 18px;
+}
+#footer_feedback{
+    position: absolute;right:30.2%;top:37px;
+}
+#footer_title{
+    width: 200px;
+}
+#footer_title_div{
+    position: absolute;right:20%;top:70px;
+}
+#footer_userID{
+    width:200px;
+}
+#footer_userID_div{
+    position: absolute;right:20%;top:95px;
+
+}
+#footer_context{
+    width: 200px;
+    height: 60px;
+}
+#footer_context_div{
+    position: absolute;right:20%;top:125px;
+}
+#footer_send{
+    width:80px;height: 25px;
+    padding:2px 4px 2px;
+    position: absolute;right:28.8%;top:190px;
+
+}
+.paddingbottom{
+    padding-bottom:5px;
+}

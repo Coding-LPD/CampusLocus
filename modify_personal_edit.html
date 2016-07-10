@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Personal - Campus Locus</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/modify.css" rel="stylesheet">
+    <link href="images/logo_28px.png" rel="shortcut icon">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+</head>
+<body>
+
+<div id="navbar" class="panel margin-clear padding-clear height-navbar width-full" style="border-radius: 0;">
+    <div class="margin-clear padding-clear margin-left width-navbar height-navbar campus-complete inline-block">
+        <label class="padding-clear font-navbar">
+            轨迹完善<img src="images/pen.png"/>
+        </label>
+    </div>
+    <div class="padding-clear width-navbar return-index inline-block">
+        <!--a设置inline-block后成为块级元素，可以包含img-->
+        <a  id="index" href="index.html" class="font-navbar inline-block index" onmouseover="indexMouseOver()" onmouseout="indexMouseOut()">
+            <img id="home_cut" src="images/home.png"/>&nbsp;返回首页
+        </a>
+    </div>
+</div>
+
+<div class="margin-clear padding-clear height-menu width-full" style="margin-bottom: 0em">
+    <div class="modify-unselected inline-block" style="margin-left: 59%">
+        <a href="modify_ability.html">才艺才能</a>
+    </div>
+    <div class="modify-unselected inline-block" style="margin-left: 5%">
+        <a href="modify_work.html">工作实习</a>
+    </div>
+    <div class="modify-selected center">
+        <a href="modify_personal.html" style="color: rgb(255,204,0);">个人信息</a>
+    </div>
+</div>
+
+<div style="position: relative;">
+    <div class="padding-clear dot-small margin-left"></div>
+    <div class="margin-clear padding-clear dot-big center"></div>
+</div>
+
+<div class="pagebody">
+    <button type="button" id="button_preview" class="button-preview-inactive inline-block"></button>
+
+    <div class="head-protrait inline-block">
+        <input type="file" id="button_file_personal" onchange="changeImg()" class="head-protrait inline-block" />
+        <img id="head_image" src="" onclick="selectImg()" onerror="javascript:this.src='images/head_protrait.png'" title="点击更换头像"/>
+    </div>
+
+    <form class="form-font form-personal inline-block" action="modify_personal.html" method="post">
+        <label class="label-personal" for="locusid">轨迹ID：</label>
+        <label class="label-userimfo-personal">
+            <!-- add span -->
+            <span id="locusid"></span>
+            <!---->
+            <a href="#" id="reset_password" class="reset-password">重置密码</a>
+        </label>
+        <br />
+        <label class="label-personal" for="username_input">&nbsp;&nbsp;&nbsp;姓名：</label>
+        <input id="username_input" class="input-personal" type="text" />
+        <br />
+        <label class="label-personal" for="usersex_male">性别：</label>
+        <!-- modify value -->
+        <input name="usersex" id="usersex_male" type="radio" checked="checked" value="男" />男 &nbsp;
+        <input name="usersex" id="usersex_female" type="radio" value="女" />女
+        <!---->
+        <br />
+        <label class="label-personal" for="userage_input">年龄：</label>
+        <input id="userage_input" class="input-personal" type="text" />
+        <br />
+        <label class="label-personal" for="usermobile_input">手机号码：</label>
+        <input id="usermobile_input" class="input-personal" type="text" />
+        <img src="images/input_incorrect.png" />
+        <br />
+        <label class="label-personal" for="useremail">邮箱：</label>
+        <label id="useremail" class="label-userimfo-personal"></label>
+        <br />
+        <label class="label-personal" for="usercollege_input">学校：</label>
+        <input id="usercollege_input" class="input-personal" type="text" />
+        <br />
+        <label class="label-personal" for="userschool_input">学院：</label>
+        <input id="userschool_input" class="input-personal" type="text" />
+        <br />
+        <label class="label-personal" for="usermajor_input">专业：</label>
+        <input id="usermajor_input" class="input-personal" type="text" />
+        <br />
+        <label class="label-personal" for="userhobby_input">爱好：</label>
+        <input id="userhobby_input" class="input-personal" type="text" />
+        <br />
+        <br />
+        <!-- remov onclick -->
+        <button type="submit" id="button_submit" class="button-submit-personal"
+                onmouseover="submitMouseOver()"  onmouseout="submitMouseOut()">保存</button>
+        <button type="button" id="button_cancel" class="button-cancel-personal"
+                onmouseover="cancelMouseOver()"  onmouseout="cancelMouseOut()">取消</button>
+        <!---->
+    </form>
+    <button type="button" id="button_next" class="button-next-active inline-block"
+            onmousedown="nextMouseDown()" onmouseup="nextMouseUp()" onclick="window.location='modify_ability.html'"></button>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.js"></script>
+<script src="lib/bmob/bmob-min.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/helper.js"></script>
+<script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_personal_edit.js"></script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+.header {
+    width: 100%;
+    height: 700px;
+    padding-top: 50px;
+    background: url("../../images/top_bg.png") no-repeat;
+    background-size: cover;
+}
+
+.nav {
+    position: absolute;
+    z-index: 1001;
+    width: 70%;
+    height: 62px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.nav .menu-link {
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    right: 0;
+    background-image: url("../../images/menu_close.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.nav .menu-link-close {
+    background-image: url("../../images/menu_x.png");
+    background-repeat: no-repeat;    
+}
+
+.menu-cover {
+    z-index: 1000;
+}
+
+.guide .title {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 6.5em;
+}
+
+.search-box {
+    position: relative;
+    width: 560px;
+    margin: 50px auto 0 auto;
+}
+
+.search-box .search {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgba(180,180,180,0.1);
+    border: 1px solid transparent;
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid white;
+    text-indent: 0.5em;
+}
+
+.search-box .search-btn {
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    right: 5px;
+    background: url("../../images/search.png") no-repeat center;
+}
+
+.menu {
+    position: relative;
+    z-index: 1001;
+    margin-top: 200px;
+    text-align: center;
+}
+
+.menu .title {
+    display: inline-block;
+    font-size: 6.5em;
+}
+
+.menu .menu-btn-list {
+    color: white;
+    display: inline-block;
+    width: 30em;
+}
+
+.menu .menu-btn-list li {
+    display: inline-block;
+    width: 11em;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+}
+
+.menu .menu-btn-list li hr {
+    width: 2em;
+    border-top: 2px solid white;
+    margin: 0 auto;
+}
+
+.wrap {
+    position: relative;
+    width: 70%;
+    min-height: 300px;
+    margin: 50px auto 0 auto;
+}
+
+.wrap .main-panel {
+    margin-right: 200px;
+}
+
+.user-panel {
+    position: absolute;
+    width: 180px;
+    top: 0;
+    right: 0;
+    border: 1px solid lightgray;
+    background-color: #fafafa;
+}
+
+.user-panel .user-info {
+    position: relative;
+    height: 70px;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+#user-head-img {
+    width: 50px;
+    height: 50px;
+    left: 20px;
+    margin: auto;
+}
+
+#user-name {
+    margin-left: 85px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.user-panel .user-btn-list li {
+    height: 50px;
+    line-height: 30px;
+    padding: 10px;
+    border-bottom: 1px solid #C0C0C0;
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.user-panel .user-btn-list li:last-child {
+    border: none;
+}
+
+.user-panel .user-btn-list li a {
+    display: inline-block;
+    width: 85%;
+    padding-left: 30px;
+    font-size: 1.2em;
+    color: black;
+    background: no-repeat 6px 8px;
+}
+
+.user-panel .user-btn-list li div {
+    display: inline-block;
+    text-align: center;
+    width: 15%;
+}
+
+.user-panel .user-btn-list li .ask {
+    background-image: url("../../images/ask.png");
+    background-repeat: no-repeat;
+}
+
+.user-panel .user-btn-list li .chat {
+    background-image: url("../../images/email.png");
+    background-repeat: no-repeat;
+}
+
+.user-panel .user-btn-list li .praise {
+    background-image: url("../../images/love.png");
+    background-repeat: no-repeat;
+}
+
+.user-panel .user-btn-list li .publish {
+    background-image: url("../../images/file.png");
+    background-repeat: no-repeat;
+}
+
+.category-list {
+    text-align: center;
+}
+
+.category-list li {
+    display: inline-block;
+    width: 5em;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 40px;
+}
+
+.category-list li:hover {
+    background: #FFFA8B;
+}
+
+.category-list li.selected {
+    background: #FFF85F;
+}
+
+.category-list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: gray;
+    font-weight: bold;
+}
+
+.item {
+    padding-top: 40px;
+}
+
+.author-info {
+    position: relative;
+    height: 70px;
+}
+
+.author-info .author-head-img {
+    width: 50px;
+    height: 50px;
+    left: 20px;
+    margin: auto;
+}
+
+.author-info .author-name {
+    margin-left: 85px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.item .locus {
+    position: relative;
+    height: 300px;
+}
+
+.item .locus button {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+
+.item .locus .foreward-btn {
+    right: 0;
+    background-image: url("../../images/right.png");
+    background-repeat: no-repeat;
+}
+
+.item .locus .backward-btn {
+    left: 0;
+    background-image: url("../../images/left.png");
+    background-repeat: no-repeat;
+}
+
+.item .locus .timeline {
+    position: relative;
+    overflow: hidden;
+    margin: 0 80px;
+    height: 100%;
+}
+
+.item .locus .timeline .big-point {
+    width: 16px;
+    height: 16px;    
+    border: 1px solid gray;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.item .locus .timeline hr {
+    border-top-color: gray;
+    width: 78px; 
+    margin: auto;
+}
+
+.record {    
+    width: 80px;
+    height: 243px;
+    text-align: center;   
+}
+
+.record .small-point {
+    width: 10px;
+    height: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.record .record-brief {
+    position: relative;
+    width: 80px;
+    height: 96px;
+}
+
+.record .record-description {
+    position: absolute;
+    width: 400px;
+    height: 80px;
+    padding: 18px 25px 10px 25px;
+    margin-left: 40px;
+    text-align: left;
+    line-height: normal;
+    cursor: pointer;
+    display: none;
+    z-index: 1;
+}
+
+.record .record-time {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;    
+    font-size: 0.9em;
+}
+
+.record .title-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;      
+}
+
+.record .record-title {
+    width: 80px;
+    color: white;
+}
+
+.record .touch-img {
+    position: absolute;
+    display: block;
+    width: 34px;
+    height: 34px;
+    z-index: 2;    
+    cursor: pointer;    
+}
+
+.record .description-title {
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.record .description-content {
+    margin-top: 0.5em;
+}
+
+.record-up .small-point {
+    margin: 20px auto 0 auto;    
+}
+
+.record-up .record-brief {
+    line-height: 80px;
+}
+
+.record-up .record-brief .touch-img {
+    top: 23px;
+    left: 23px;  
+}
+
+.record-up .record-description {
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    top: 0;
+}
+
+.record-down {
+    padding-top: 79px;
+}
+
+.record-down .small-point {
+    margin: 0 auto 20px auto; 
+}
+
+.record-down .record-brief .record-title {
+    padding-top: 45px;
+}
+
+.record-down .record-brief .touch-img {
+    top: 38px;
+    left: 23px;  
+}
+
+.record-down .record-description {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    top: 16px;
+    left: -400px;
+}
+
+.pop-up {
+    display: none;
+    position: absolute;
+    width: 800px;   
+    top: 720px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1003;
+    padding-top: 20px;
+}
+
+.pop-up-cover {
+    z-index: 1002;
+    display: none;
+}
+
+.pop-up .close-btn {
+    position: absolute;
+    right: 0;
+}
+
+.record-detail-box {
+    margin-right: 70px;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-right: 40px;
+    background-color: white;
+}
+
+.author-info .record-base-info {
+    margin-left: 90px;
+    margin-right: 6em;
+    padding-top: 10px;
+    height: 100%;    
+}
+
+.author-info .record-base-info .author-name {
+    margin: 0;
+    height: auto;
+    line-height: normal;  
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4d4d4d;
+}
+
+.author-info .record-base-info .record-title {
+    margin-top: 10px;
+    color: #909090;
+}
+
+.author-info .record-time {
+    position: absolute;
+    width: 6em;
+    height: 1em;
+    font-size: 0.9em;
+    text-align: right;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.record-detail-box .record-detail {
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.record-detail-box .record-detail .record-description {
+    color: #4d4d4d;
+}
+
+.record-extra-info {
+    margin-top: 10px;
+    color: #c7c7c7;
+}
+
+.record-extra-info .record-label {
+    float: left;
+    width: 30%;
+    background-image: url("../../images/talent.png");
+    background-repeat: no-repeat;    
+    background-position: left center;
+    padding-left: 25px;
+}
+
+.record-extra-info .action-list {
+    float: right;
+    text-align: right;
+}
+
+.record-detail .gray-up-triangle {
+    border-width: 10px;
+    margin-left: 445px;
+}
+
+.record-detail .action-panel {
+    padding: 15px;
+}
+
+.action-panel .publish-box {
+    text-align: right;
+}
+
+.publish-box .publish-text {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 0.5em;
+    border: 1px solid #cccccc;
+    background-color: white;
+}
+
+.publish-box .publish-btn {
+    margin-top: 15px;
+    padding: 8px 16px;
+}
+
+.message-list {
+    margin-top: 20px;
+}
+
+.message-list li {
+    position: relative;
+}
+
+.message-list .message-item {
+    border-top: 1px solid #cccccc;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.message-list .reply-item {
+    background-color: white;
+    padding: 20px;
+}
+
+.message-list .publisher-head-img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.message-list .message-body {
+    margin-left: 70px;
+}
+
+.message-list .message-content {
+    margin-top: 10px;
+}
+
+.message-list .publisher {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.message-list .message-extra {
+    margin-top: 15px;
+    color: #c6c6c6;
+}
+
+.message-list .publish-time {
+    float: left;
+}
+
+.message-list .action-list {
+    display: block;
+    float: right;
+    text-align: right;
+}
+
+.message-list .load-more {
+    border: none;
+    margin: 50px auto;
+}
+
+.title-bg-purple    { background-image: url("../../images/purple.png");  color: white; background-repeat: no-repeat; }
+.title-bg-blue      { background-image: url("../../images/blue.png");    color: white; background-repeat: no-repeat; }
+.title-bg-orange    { background-image: url("../../images/orange.png");  color: white; background-repeat: no-repeat; }
+.title-bg-green     { background-image: url("../../images/green.png");   color: white; background-repeat: no-repeat; }
+.title-bg-cyan      { background-image: url("../../images/cyan.png");    color: white; background-repeat: no-repeat; }
+
+.record-down [class*=title-bg-] {
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+}

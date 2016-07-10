@@ -1,5 +1,5 @@
-html {
-   /*--background: rgb(34,34,34);*/
+﻿html {
+    background: rgb(34, 34, 34);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -13,14 +13,15 @@ body {
     font-family: "微软雅黑", serif;
     background: transparent;
     border: transparent;
+    color: #FFF;
 }
 
 .panel {
-    /*background: rgb(7,7,7);*/
+    background: rgb(7, 7, 7);
 }
 
 .border {
-    border: 1px #000 solid;
+    border: 1px #FFF solid;
 }
 
 .margin-clear {
@@ -36,10 +37,421 @@ body {
 }
 
 .margin-right {
-    margin-right:18.75%;
+    margin-right: 18.75%;
 }
 
-.margin-center-vertical {
-    margin-top: auto;
-    margin-bottom: auto;
+.font-navbar {
+    font-size: 14px;
+    line-height: 3em;
+    font-weight: 500;
+}
+
+.width-navbar {
+    width: 6.25%;
+}
+
+.height-navbar {
+    height: 3em;
+}
+
+.return-index {
+    margin-left: 50%;
+}
+
+.campus-complete {
+    background: rgb(255,248,95);
+    text-align: center;
+    color: rgb(34, 34, 34);
+}
+
+.height-menu {
+    height: 4em;
+}
+
+.white {
+    color: #FFF;
+}
+
+.main-color {
+    color: #FFF85F;
+}
+
+.width-full {
+    width: 100%;
+}
+
+a, a:link, a:visited, a:active {
+    color: #FFF;
+    text-decoration: none;
+}
+
+a.index:hover {
+    text-decoration: none;
+    color: #FFF85F;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(255, 204, 0);
+}
+
+.modify-selected {
+    margin-top: -26px;
+    color: rgb(255, 204, 0);
+    font-size: 22px;
+    width: 8%;
+}
+
+.modify-unselected {
+    margin-top: 2em;
+    color: #FFF;
+    font-size: 16px;
+    /*width: 5%;*/
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.dot-big {
+    height: 8px;
+    width: 100%;
+    background: url("../images/dot_big.png") no-repeat center;
+    position: absolute;
+    z-index: 100;
+}
+
+.dot-small {
+    height: 2px;
+    background: url("../images/dot_small.png") repeat-x;
+    margin-top: 3px;
+    position: absolute;
+    width: 62.5%;
+    z-index: 1;
+}
+
+/*.gradient-left {
+    background: url("../images/grad_left.png") no-repeat;
+    position: absolute;
+    z-index: 50;
+}*/
+
+.inline-block {
+    /*float: left;*/
+    display: inline-block;
+}
+
+.button-preview-inactive {
+    background: url("../images/prev.png") top;
+    width: 22px;
+    height: 38px;
+    border: none;
+    float: left;
+    margin-left: 0;
+    margin-top: 10em;
+    outline: none;
+}
+
+.button-preview-active {
+    background: url("../images/prev.png") center;
+    width: 22px;
+    height: 38px;
+    border: none;
+    float: left;
+    margin-top: 10em;
+    outline: none;
+}
+
+.button-next-inactive {
+    background: url("../images/next.png") top;
+    width: 22px;
+    height: 38px;
+    border: none;
+    float: right;
+    margin-top: 10em;
+    outline: none;
+}
+
+.button-next-active {
+    background: url("../images/next.png") center;
+    width: 22px;
+    height: 38px;
+    border: none;
+    float: right;
+    margin-top: 10em;
+    outline: none;
+}
+
+div.head-protrait {
+    position: relative;
+    margin-left: 8%;
+    margin-top: 3em;
+    float: left;
+    width: 250px;
+    height: 250px;
+}
+
+input.head-protrait {
+    opacity:0;
+    filter:alpha(opacity=0);
+    float: left;
+    position: absolute;
+    z-index: 100;
+}
+
+.head-protrait img {
+    max-height: 100%;
+}
+
+.form-font {
+    font-size: 12px;
+    font-family: "微软雅黑 Light", serif;
+    color: #FFF;
+}
+
+.form-personal {
+    margin-top: 4em;
+    float: left;
+    width: 50%;
+}
+
+.label-personal {
+    text-align: right;
+    width: 10em;
+    font-weight: 300;
+    line-height: 1.8em;
+}
+
+.label-userimfo-personal {
+    text-align: left;
+    width: 12em;
+    line-height: 1.8em;
+    font-weight: 300;
+}
+
+.input-personal {
+    border: none;
+    border-bottom: 1px solid #BBB;
+    background: transparent;
+    width: 12em;
+    outline: none;
+}
+
+.pagebody {
+    width: 62.5%;
+    margin-left: 18.75%;
+}
+
+.button-submit-personal {
+    background: transparent;
+    border: transparent;
+    text-decoration: underline;
+    outline: none;
+    margin-left: 24em;
+}
+
+.button-cancel-personal {
+    background: transparent;
+    border: transparent;
+    outline: none;
+}
+
+.button-edit-personal {
+    background: url("../images/edit.png");
+    width: 16px;
+    height: 16px;
+    border: none;
+    outline: none;
+    float: right;
+    margin-top: 0em;
+}
+
+label a.reset-password {
+    float: right;
+    color: #BBB;
+    font-size: 12px;
+    font-weight:100;
+}
+
+label a.reset-password:hover {
+    color: #FFF85F;
+}
+
+.empty-ability {
+    float: left;
+    margin-top: 6em;
+    margin-left: 9.5em;
+    line-height: 10em;
+    width: 34em;
+}
+
+.gray {
+    color: #BBB;
+}
+
+.button-add-ability {
+    background: url("../images/add.png");
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    float: left;
+    margin-top: 3.4em;
+}
+
+.date-year {
+    font-size: 20px;
+    color: #FFF85F;
+    font-weight: 600;
+}
+
+label.year {
+    font-size: 20px;
+    color: #FFF85F;
+    font-weight: 500;
+}
+
+.div-timeline {
+    float: left;
+}
+
+.div-timeline-width {
+    width: 43.5em;
+}
+
+.div-timeline1 {
+    line-height: 45px;
+    width: 43em;
+    margin-top: 3em;
+    margin-left: 3em;
+}
+
+.div-timeline1-spread {
+   /*transform: rotate(-90deg);*/
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.div-timeline2 {
+    height: 30px;
+    width: 2px;
+    background: url("../images/line.png");
+    margin-left: 12.2em;
+}
+
+.div-timeline3 {
+    margin-left: 5em;
+}
+
+.div-timeline3 label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.label-date {
+    width: 1em;
+    text-align: right;
+}
+
+.timeline-circle {
+    margin-left: 1.6em;
+}
+
+.div-timeline4 {
+    height: 250px;
+    width: 2px;
+    background: url("../images/line.png");
+    margin-left: 12.2em;
+    margin-right: 12px;
+    float: left;
+}
+
+.div-timeline4-content {
+    float: left;
+    margin-left: 1.9em;
+}
+
+.form-add {
+    margin-top: 7.5em;
+    margin-left: 2em;
+}
+
+.form-add input {
+    width: 30em;
+    margin-top: 0.5em;
+    background: transparent;
+    border: 1px solid #BBB;
+    font-size: 14px;
+}
+
+.form-add textarea {
+    width: 35em;
+    background: transparent;
+    overflow: hidden;
+    margin-top: 1.5em;
+    border: 1px solid #BBB;
+    font-size: 12px;
+}
+
+.button-submit-ability {
+    background: transparent;
+    border: transparent;
+    text-decoration: underline;
+    outline: none;
+    margin-left: 33em;
+    font-size: 12px;;
+}
+
+.button-cancel-ability {
+    background: transparent;
+    border: transparent;
+    outline: none;
+    font-size: 12px;
+}
+
+.name-ability {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    width: 28em;
+    margin-left: 2em;
+}
+
+.others-ability {
+    color: #CECECE;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.6em;
+}
+
+.details-ability {
+    color: #999999;
+    font-weight: 500;
+    line-height: 1.5em;
+    font-size: 12px;
+    width: 37em;
+    display: inline-block;
+    margin-top: 1em;
+    max-height: 7.5em;
+    overflow: hidden;/*essential*/
+    white-space: pre;
+}
+
+a.fulltext-ability {
+    color: #FFF85F;
+    text-decoration: none;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.select {
+    margin-left: 10em;
+}
+
+.collapse-click {
+    width: 44px;
 }

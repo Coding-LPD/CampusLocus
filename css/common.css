@@ -1,0 +1,292 @@
+@import url("DancingScript_Bold/stylesheet.css");
+
+body {
+    width: 100%;
+    min-width: 900px;
+}
+
+button, input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: white;
+}
+
+a:hover, a:focus {
+    color: white;
+    text-decoration: none;
+}
+
+h1, ul, li, hr, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.cover {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);        
+}
+
+.title {
+    font-family: "DancingScript Bold", serif;
+    color: white;
+}
+
+.logo {
+    width: 62px;
+    height: 62px;   
+}
+
+.hide {
+    display: none;
+}
+
+.v-center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.clear {
+    clear: both;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.close-btn {        
+    width: 30px;
+    height: 30px;
+    background-image: url('../../images/X.png');
+    background-repeat: no-repeat;
+}
+
+.close-btn:hover {
+    background-image: url('../../images/X_click.png');
+}
+
+/* data-tip */
+.data-tip {
+    text-align: center;
+    color: #646464;
+    margin: 100px;
+}
+
+.data-tip .load-more {
+    display: block;
+    width: 8em;
+    margin: 0 auto;
+    border-left: 1px solid black;
+    border-bottom: 2px solid black;    
+}
+
+/* action-list */
+.action-list {
+    display: inline-block;    
+}
+
+.action-list li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.action-list .praise {
+    width: 20px;
+    height: 15px;    
+    line-height: 15px;
+    background-image: url("../../images/love.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* footer */
+.footer {
+    width: 100%;
+    background: url("../images/footer_bg.png") no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding: 30px 100px;
+}
+
+.footer .content {
+    color: #b4b4b4;
+    text-align: left;
+}
+
+.content .title {
+    font-weight: bold;  
+}
+
+.product-info {
+    float: left;
+    width: 70%;
+}
+
+.contact {
+    margin-top: 40px;
+}
+
+.contact-list li {
+    display: inline-block;
+    margin-right: 20px;    
+}
+
+.contact-list .value {
+    color: #FFF85F;
+}
+
+.feedback {
+    float: right;
+    width: 29%;
+}
+
+.feedback .title {
+    padding-left: 40%;
+}
+
+.feedback-form li {
+    margin-top: 8px;
+}
+
+.feedback-form li label {
+    float: left;
+    margin: 0;
+    height: 100%;
+    width: 39%;
+    text-align: right;
+}
+
+.feedback-form input,
+.feedback-form textarea 
+{
+    float: right;
+    width: 60%;
+    background-color: #ababab;
+    color: black;
+    text-indent: 0.5em;
+    border: none;
+    padding: 0;
+}
+
+.feedback-form .submit-btn{
+    display: block;
+    color: black;  
+    margin-left: 40%;  
+    padding: 5px 30px;
+}
+
+.footer hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-top-style: dashed;
+    border-top-color: #ababab;
+}
+
+.footer .copyright {
+    font-family:arial;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+hr.gray-gradient {
+    border: none;
+    height: 1px;
+    background: -webkit-linear-gradient(left, rgba(255,0,0,0), #CCCCCC, rgba(255,0,0,0));
+    background:    -moz-linear-gradient(right, rgba(255,0,0,0), #CCCCCC, rgba(255,0,0,0));
+    background:      -o-linear-gradient(right, rgba(255,0,0,0), #CCCCCC, rgba(255,0,0,0));    
+    background:         linear-gradient(to right, rgba(255,0,0,0), #CCCCCC, rgba(255,0,0,0));
+}
+
+.gray-up-triangle {
+    width: 0;
+    height: 0;    
+    border-top:    1px solid transparent;
+    border-left:   1px solid transparent;
+    border-right:  1px solid transparent;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.yellow-bg { background-color: #FFF85F; color: white;}
+.purple-bg { background-color: #977BD6; color: white;}
+.blue-bg   { background-color: #5389C2; color: white;}
+.orange-bg { background-color: #EE7F00; color: white;}
+.green-bg  { background-color: #96B439; color: white;}
+.cyan-bg   { background-color: #4BC4A9; color: white;}
+.gray-bg   { background-color: #f5f5f5; color: black;}
+
+.yellow-btn       { background-color: #FFF85F; }
+.yellow-btn:hover { background-color: #FFFA8B; }
+
+/* spinner third-party */
+.spinner {
+  margin: 0 auto;
+  width: 50px;
+  height: 60px;
+  text-align: center;
+  font-size: 10px;
+}
+ 
+.spinner > div {
+  background-color: #FFF85F;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+   
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+ 
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+ 
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+ 
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+ 
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+ 
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+  20% { -webkit-transform: scaleY(1.0) }
+}
+ 
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}

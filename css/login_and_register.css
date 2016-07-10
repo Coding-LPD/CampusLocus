@@ -1,4 +1,4 @@
-@import url("DancingScript_Regular/stylesheet.css");
+﻿@import url("DancingScript_Regular/stylesheet.css");
 @import url("DancingScript_Bold/stylesheet.css");
 
 html {
@@ -89,6 +89,7 @@ a:hover, a:link, a:visited, a:active {
     position: relative;
 }
 
+/*
 a:visited, a:active {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -96,6 +97,7 @@ a:visited, a:active {
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
+*/
 
 a:hover, .glow {
     color: #FFF;

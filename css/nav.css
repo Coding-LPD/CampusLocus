@@ -1,0 +1,45 @@
+#wholePage{
+    z-index: 100;
+    width:100%;height:100%;
+    color:red;
+}
+#nav_bg{
+    z-index: 150;
+    position: fixed;
+    width:100%; height:62px;
+    background: url("../images/nav_bg.png") no-repeat;}
+#nav_logo{
+    width:60px;height:60px;
+    background: url("../images/Logo.png") no-repeat;
+    position: fixed;top: 0px;left:20%;}
+#nav_menu_yellow{
+    z-index: 1;
+    width:62px; height:62px;
+    background: url("../images/top.png") no-repeat;
+    position: fixed;top:0px;right:20%}
+#nav_menu_close{
+    z-index: 2;
+    width:25px;height:20px;
+    background: url("../images/menu_close.png") no-repeat;
+    position: absolute;top:20px;left:18px;
+}
+#search_input{
+    width:100%;
+    height: 100%;
+}
+#search_but{
+    z-index:2;
+    width: 16px;height: 16px;
+    background: url("../images/search.png") no-repeat;
+}
+#nav_search{
+    z-index:1;
+    width: 35%;
+    height:30px;
+    position:absolute;top:25%;left:32.5%;
+}
+#submit_btn{
+    width:16px;height:16px;
+    background: url("../images/search.png");
+    position: absolute;right: 5px;top:7px;
+}

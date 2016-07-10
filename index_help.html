@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="copyright" content="2016 campus locus All Rights Reserved.">
+    <title>Help - Campus Locus</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/index_shaozhen2.css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/index_chat.js" type="text/javascript"></script>
+    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <link href="images/logo_28px.png" rel="shortcut icon">
+</head>
+<body>
+<div id="nav_bg">
+    <div id="nav_logo" ></div>
+    <div id="nav_search" class="center panel">
+        <input id="search_input" class="bg-clear center boder_clear" name="search" type="text" placeholder=" 找工作实习试试">
+        <button id="submit_btn" class="boder_clear" name="Submit" type="button" ></button>
+    </div>
+    <a href=#> <div id="nav_menu_yellow" onmousemove="nav_menu_yellow_move()" onmouseout="nav_menu_yellow_out()">
+        <div id="nav_menu_close"></div>
+    </div> </a>
+</div>
+
+<div id="help" class="help">
+    <div id="help_top" class="help_top chat_boder">
+        <span class="help_title center font_fam font_big">协作交流</span>
+    </div>
+    <table width="100%"  border="0" cellpadding="0" cellpadding="15px">
+        <tr>
+            <td class="help_border" rowspan="2" width="13%"><img src="images/head.png" class="center help_img"></td>
+            <td class="help_td_name font_fam">木子李</td>
+            <td class="help_td_time help_border" rowspan="2">2016-6-28 12:00</td>
+        </tr>
+        <tr>
+            <td class="help_td_com help_border font_fam">呀呀呀呀呀呀呀呀呀呀呀呀</td>
+        </tr>
+        <tr>
+            <td class="help_border" rowspan="2"><img src="images/head.png" class="center help_img"></td>
+            <td class="help_td_name font_fam">木子李</td>
+            <td class="help_td_time help_border" rowspan="2">2016-6-28 12:00</td>
+        </tr>
+        <tr>
+            <td class="help_td_com help_border font_fam">哦哦哦哦哦哦哦哦哦哦哦哦</td>
+        </tr>
+    </table>
+</div>
+
+<div id="side" class="boder_clear">
+    <div id="user_info" class="chat_boder side_bgcolor">
+        <input id="user_name" class="boder_clear side_bgcolor font_fam" type="text" readonly="readonly" value="木子李">
+        <img id="user_img" src="images/head.png">
+    </div>
+
+    <input id="ask_number" class="side3 side_bgcolor chat_boder" readonly="readonly" value="2" >
+    <button id="ask" class="chat_boder side3 side_bgcolor font_fam" onmousemove="ask_move()" onmouseout="ask_out()">
+        <small>请教</small>
+    </button>
+
+    <input id="talk_number" class="side3 side_bgcolor chat_boder" readonly="readonly" value="2">
+    <button id="talk" class="chat_boder side3 side_bgcolor font_fam" onmousemove="talk_move()" onmouseout="talk_out()">
+        <small>协作交流</small>
+    </button>
+
+    <input id="like_number" class="side3 side_bgcolor chat_boder" readonly="readonly" value="2">
+    <button id="like"class="chat_boder side3 side_bgcolor font_fam" onmousemove="like_move()" onmouseout="like_out()">
+        <small>点赞</small>
+    </button>
+
+    <input id="post_number" class="side3 side_bgcolor chat_boder" readonly="readonly" value="2">
+    <button id="post"class="chat_boder side3 side_bgcolor font_fam" onmousemove="post_move()" onmouseout="post_out()">
+        <small>发表文章</small>
+    </button>
+</div>
+
+<div id="footer_bg">
+    <!--<div id="footer_logo" class="center"></div>-->
+    <div id="footer_left">
+        <div id="footer_aboutus" class=" white font_fam footer_left font_9">
+            <div class="paddingbottom"> <strong>关于校园轨迹网</strong> </div>
+            <div class="b4 font_5 font_fam_con">
+                哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈<br>
+                哈哈哈哈哈哈哈哈哈哈<br>
+                哈哈哈哈<br>
+            </div>
+        </div>
+        <div id="footer_contactus" class=" white font_fam footer_left font_9" >
+            <div class="paddingbottom" ><strong>联系我们</strong></div>
+            <div class="font_fam_con font_5 ">
+                <span class="b4">客服邮箱：</span><span class="fff85f">xxxx@163.com</span>&nbsp;
+                <span class="b4">商务合作：</span><span class="fff85f">xxxx@163.com</span>&nbsp;
+                <span class="b4">客服qq：</span><span class="fff85f">1234567890</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div>
+        <div id="footer_feedback" class="font_9 white"><strong>意见反馈</strong></div>
+        <div id="footer_title_div" class="font_5 b4">标题：<input id="footer_title" class="ababab boder_clear black"> </div>
+        <div id="footer_userID_div" class="font_5 b4">用户ID：<input id="footer_userID" class="ababab boder_clear black"></div>
+        <div id="footer_context_div" class="font_5 b4" >反馈内容：<textarea id="footer_context" class="ababab boder_clear black"></textarea></div>
+        <div><button id="footer_send" class="bg_fff85f boder_clear font_9" onmousemove="footer_send_move()" onmouseout="footer_send_out()">确认提交</button></div>
+    </div>
+    <div id="copyright" class="center font_9"><small>Copyright &copy; 2016 campus locus All Rights Reserved.</small></div>
+</div>
+
+</body>
+</html>
