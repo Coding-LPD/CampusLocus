@@ -59,7 +59,7 @@ body {
 }
 
 .campus-complete {
-    background: rgb(255,248,95);
+    background: rgb(255, 248, 95);
     text-align: center;
     color: rgb(34, 34, 34);
 }
@@ -194,8 +194,8 @@ div.head-protrait {
 }
 
 input.head-protrait {
-    opacity:0;
-    filter:alpha(opacity=0);
+    opacity: 0;
+    filter: alpha(opacity=0);
     float: left;
     position: absolute;
     z-index: 100;
@@ -272,7 +272,7 @@ label a.reset-password {
     float: right;
     color: #BBB;
     font-size: 12px;
-    font-weight:100;
+    font-weight: 100;
 }
 
 label a.reset-password:hover {
@@ -329,7 +329,7 @@ label.year {
 }
 
 .div-timeline1-spread {
-   /*transform: rotate(-90deg);*/
+    /*transform: rotate(-90deg);*/
     margin-left: 1em;
     margin-right: 1em;
 }
@@ -400,7 +400,7 @@ label.year {
     border: transparent;
     text-decoration: underline;
     outline: none;
-    margin-left: 33em;
+    margin-left: 29em;
     font-size: 12px;;
 }
 
@@ -437,8 +437,7 @@ label.year {
     display: inline-block;
     margin-top: 1em;
     max-height: 7.5em;
-    overflow: hidden;/*essential*/
-    white-space: pre;
+    overflow: hidden; /*essential*/
 }
 
 a.fulltext-ability {
@@ -454,4 +453,43 @@ a.fulltext-ability {
 
 .collapse-click {
     width: 44px;
+}
+
+input.date {
+    opacity:0;
+    filter:alpha(opacity=0);
+    z-index: 100;
+    width: 7em;
+    position: absolute;
+    margin-top: 2px;
+}
+
+div.date {
+    width: 6.5em;
+    position: absolute;
+}
+
+div.date label {
+    font-size: 12px;
+    color: #FFF;
+    z-index: 1;
+    font-weight:300;
+}
+
+#date_month_show, #date_day_show {
+    width: 1em;
+    text-align: right;
+}
+
+.date img {
+    margin-left: 0.2rem;
+}
+
+.date-year-select {
+    width: 2rem;
+}
+
+.date-mad-select {
+    width: 1.2rem;
+    text-align: center;
 }

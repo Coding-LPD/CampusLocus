@@ -136,9 +136,9 @@ function collapse(year) {
     /*滑动效果*/
     $('div[id^=' + year + ']').slideToggle();
 
-    /*$("#collapse" + year).attr('src',$("#collapse" + year).attr('src')=='images/open.png'?'images/close.png':'images/open.png');*/
+    $("#collapse" + year).attr('src',$("#collapse" + year).attr('src')=='images/open.png'?'images/close.png':'images/open.png');
 
-    $("#collapse" + year).rotate(45);
+    /*$("#collapse" + year).rotate(45);*/
 
     /*toggle(
         function() {
