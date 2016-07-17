@@ -7,7 +7,7 @@
     $(document).ready(function () {
         BmobBase.init();
         checkLogin();
-        currentUser = Bmob.User.current();
+        currentUser = BmobBase.User.current();
         init()
     });
 
@@ -64,17 +64,20 @@
             return;
         }
 
-        var ability = new BmobBase.Ability();
+        var owner = BmobBase.User.createOnlyId(currentUser.id),
+            ability = new BmobBase.Ability();
+            
         ability.set('title', title);
         ability.set('partner', partner);
         ability.set('nature', nature);
         ability.set('result', result);
         ability.set('description', description);
-        ability.set('praise', 0);
-        ability.set('owner', currentUser);
+        ability.set('type', BmobBase.Record.Type.Ability);
+        ability.set('owner', owner);
         ability.set('time', new Date());
 
         ability.save().then(function (r) {
+            alert('保存成功');
             location.replace('modify_ability_finished.html');
         }, function (error) {
             LogHelper.error('save ability', error);

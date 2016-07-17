@@ -85,6 +85,36 @@ ul {
     background-image: url('../../images/X_click.png');
 }
 
+/* pop-up */
+.pop-up {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1003;
+    padding-top: 20px;
+}
+
+.pop-up-cover {
+    z-index: 1002;
+    display: none;
+}
+
+.pop-up .close-btn {
+    position: absolute;
+    right: 0;
+}
+
+.pop-up .pop-up-detail {
+    margin-right: 70px;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-right: 40px;
+    background-color: white;
+}
+
 /* data-tip */
 .data-tip {
     text-align: center;

@@ -1,7 +1,17 @@
 
 (function () {
 
-    var jqRecordDataTip;
+    var jqRecordDataTip, jqMainPanel,
+        // 侧边个人信息相关
+        jqUserHeadImg, jqUserName, jqLogoutBtn,
+        // 轨迹详细信息弹出框相关
+        jqPRecordTime, jqPAuthorImg, jqPAuthorName, jqPRecordTitle, jqPRecordDesc, jqPRecordLabel, jqPPublishText, jqPMessageList,  
+        jqPAskBtn, jqPChatBtn, jqPPraiseBtn, jqPPublishBtn,
+        jqReplyDataTip, jqReplyItem, jqAnchorToPopup,
+        // 反馈相关
+        jqFeedbackTitle, jqFeedbackContent, jqFeedbackSubmitBtn,
+        // 顶部搜索框
+        jqGuideSearchText, jqGuideSearchBtn;
 
     var step = 50,  //轨迹前进/后退速度
         bpCount = 0,  // big-point个数
@@ -15,7 +25,12 @@
         nowLeft = 0, // timeline中新元素起始位置
         nowType = 0, // 当前选中的轨迹类别
         recordPage = 0,  // 当前轨迹记录的页数
-        recordLimit = 10;  // 轨迹记录每页的条数
+        recordLimit = 3,  // 轨迹记录每页的条数 
+        messagePage = 0, // 请教列表的页数
+        messageLimit = 3,  // 请教列表每页的条数
+        currentUser = 1, 
+        recordArray = [],
+        selectedRecord; // 用户选中，显示在弹出框中的轨迹记录
 
     // 枚举类型
     var RecordType = {
@@ -34,108 +49,363 @@
         lastColors = [-1, -1];  //防止相邻三个颜色相同
 
     $(document).ready(function () {
-        var i,
-            diffMonth,
-            records1 = [
-            {
-                time: '2016-01-01',
-                title: '春之歌',
-                description: '春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-01-15',
-                title: '夏之歌',
-                description: '夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-03-15',
-                title: '秋之歌',
-                description: '秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-04-15',
-                title: '冬之歌',
-                description: '冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！'
-            }],
-            records2 = [
-            {
-                time: '2016-03-01',
-                title: '春之歌',
-                description: '春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-04-15',
-                title: '夏之歌',
-                description: '夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！夏之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-04-15',
-                title: '秋之歌',
-                description: '秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！秋之歌让我受益匪浅！'
-            },
-            {
-                time: '2016-05-15',
-                title: '冬之歌',
-                description: '冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！冬之歌让我受益匪浅！'
-            }];
-
         BmobBase.init();
         init();
         initEvent();        
-        // getMoreRecord(nowType);
-        jqRecordDataTip.before(createItem(records1));
-        jqRecordDataTip.before(createItem(records2));
+        currentUser = BmobBase.User.current();
+        setUserInfo(currentUser);
+        getMoreRecord(nowType);
     });
 
     function init() {
-        jqRecordDataTip = $('#record-data-tip');        
+        jqRecordDataTip = $('#record-data-tip');    
+        jqMainPanel = $('.main-panel');  
+        // 侧边个人信息相关
+        jqUserHeadImg = $('#user-head-img');  
+        jqUserName = $('#user-name');
+        jqLogoutBtn = $('#logout-btn');
+        // 轨迹详细信息弹出框相关
+        jqPRecordTime = $('#popup-record-time');
+        jqPAuthorImg = $('#popup-author-img');
+        jqPAuthorName = $('#popup-author-name');
+        jqPRecordTitle = $('#popup-record-title');
+        jqPRecordDesc = $('#popup-record-description');
+        jqPRecordLabel = $('#popup-record-label');
+        jqPPublishText = $('#popup-publish-text');
+        jqPMessageList = $('#popup-message-list');
+        jqPAskBtn = $('#popup-ask-btn');
+        jqPChatBtn = $('#popup-chat-btn');
+        jqPPraiseBtn = $('#popup-praise-btn');
+        jqPPublishBtn = $('#popup-publish-btn');
+        jqReplyDataTip = $('#reply-data-tip');
+        jqReplyItem = $('#popup-reply-item');
+        jqAnchorToPopup = $('#to-pop-up');
+        // 反馈相关
+        jqFeedbackTitle = $('#feedback-title');
+        jqFeedbackContent = $('#feedback-content');
+        jqFeedbackSubmitBtn = $('#feedback-submit-btn');
+        // 顶部搜索框
+        jqGuideSearchText = $('#guide-search');
+        jqGuideSearchBtn = $('#guide-search-btn');
     }
 
     function initEvent() {
+        // 退出当前账号
+        jqLogoutBtn.click(function (e) {
+            e.preventDefault();
+            BmobBase.User.logout();
+            location.replace('login.html');
+        });
         // 类别选择
         $('.category-list li').click(function (e) {
             e.preventDefault();
+            if (nowType == $(this).val()) {
+                return;
+            }
             nowType = $(this).val();
             recordPage = 0;
+            recordArray = [];
+            jqMainPanel.find('.item').remove();
             getMoreRecord(nowType);
+        });
+        // 加载轨迹的'加载更多'
+        jqRecordDataTip.find('.load-more').click(function (e) {
+            e.preventDefault();
+            getMoreRecord(nowType);
+        });
+        // 发表请教内容
+        jqPPublishBtn.click(function (e) {
+            e.preventDefault();
+            saveConsultation(jqPPublishText, currentUser.id, selectedRecord);
+        });
+        // 请教内容框中按'回车'进行发表
+        jqPPublishText.keyup(function (e) {
+            if (e.keyCode == 13) {
+                jqPPublishBtn.click();
+            }
+        });
+        // 请教内容'加载更多'
+        jqReplyDataTip.find('.load-more').click(function (e) {
+            e.preventDefault();
+            getMoreMessage(selectedRecord);
+        });
+        // 提交反馈内容
+        jqFeedbackSubmitBtn.click(function (e) {
+            e.preventDefault();
+            saveFeedback(jqFeedbackTitle, jqFeedbackContent, currentUser.id);
+        });
+        // 实现搜索框搜索
+        jqGuideSearchBtn.click(function (e) {
+            e.preventDefault();
+            searchRecord(jqGuideSearchText);
+        });
+        jqGuideSearchText.keyup(function (e) {
+            if (e.keyCode == 13) {
+                jqGuideSearchBtn.click();
+            }
+        })
+    }
+
+    /**
+     * 设置侧边用户个人信息
+     * user: Bmob.User,提供信息的对象
+     */
+    function setUserInfo(user) {
+        jqUserHeadImg.attr('src', user.get('image'));
+        jqUserName.html(user.get('nickname'));
+    }
+    
+    /**
+     * 设置弹出框的轨迹详细信息
+     * record: BmobBase.Ability | BmobBase.Social | BmobBase.Work,轨迹对象
+     */
+    function initPopup(record) {
+        jqPRecordTime.html(getDateString(record.get('time')));
+        jqPAuthorImg.attr('src', record.get('owner').get('image') || '');
+        jqPAuthorName.html(record.get('owner').get('nickname'));
+        jqPRecordTitle.html(record.get('title'));
+        jqPRecordDesc.html(record.get('description'));
+        jqPRecordLabel.html(BmobBase.Record.Label[record.get('type')]);  
+        selectedRecord = record;
+        messagePage = 0;
+        jqPMessageList.children('.message-item').remove();
+        getMoreMessage(record);
+    }
+
+    /**
+     * 获取下一页轨迹记录，并在页面上显示出来
+     * selectedType: 用户选中的轨迹类别
+     */
+    function getMoreRecord(selectedType) {
+        DataTipHelper.showLoading(jqRecordDataTip);
+
+        var userQuery;
+        userQuery = new Bmob.Query(BmobBase.BestRecord);
+        userQuery.limit(recordLimit);
+        userQuery.skip(recordPage * recordLimit);
+        userQuery.descending('praise');
+        // 不是'精选'类别时需要指定特定轨迹类型
+        if (selectedType != 0) {
+            userQuery.equalTo('type', selectedType);
+        }
+        // 按'赞数'排序，依次获取到用户
+        userQuery.find().then(function (data) {
+            var promises = [],
+                recordCount = data.length,
+                owner, 
+                type,
+                recordQuery;
+
+            // 并行获取这些用户的轨迹记录
+            for (var j=0; j<data.length; j++) {                                              
+                owner = data[j].get('owner');
+                type = data[j].get('type');
+
+                 if (type == BmobBase.Record.Type.Ability) {
+                    recordQuery = new Bmob.Query(BmobBase.Ability);
+                } else if (type == BmobBase.Record.Type.Work) {
+                    recordQuery = new Bmob.Query(BmobBase.Work);
+                } else if (type == BmobBase.Record.Type.Social) {
+                    recordQuery = new Bmob.Query(BmobBase.Social);
+                } else {
+                    continue;
+                }
+                recordQuery.equalTo('owner', owner);
+                recordQuery.descending('time');
+                recordQuery.include('owner');
+                promises.push(recordQuery.find());  
+            }
+            // 当所有记录获取完毕，开始生成并插入DOM
+            Bmob.Promise.when(promises).then(function () {
+                var data;
+                for (var i=0; i<arguments.length; i++) {
+                    recordArray[recordArray.length] = [];
+                    data = arguments[i];
+                    if (data.length <= 0) {
+                        continue;
+                    }
+                    // 产生新的轨迹
+                    jqRecordDataTip.before(createItem(recordArray.length-1, data));
+                }
+                // 返回的记录数量少于每页数量,则表明没有数据了
+                if (recordCount < recordLimit) {
+                    DataTipHelper.showNoMoreData(jqRecordDataTip);
+                } else {
+                    recordPage += 1;
+                    DataTipHelper.showLoadMore(jqRecordDataTip);
+                }
+            });
         });
     }
 
-    function getMoreRecord(type) {
-        var query;
-        if (type == 1) {
-            query = new Bmob.Query(BmobBase.Ability);
-        } else if (type == 2) {
-            query = new Bmob.Query(BmobBase.Social);
-        } else if (type == 3) {
-            query = new Bmob.Query(BmobBase.Work);
+    /**
+     * 获取下一页的轨迹相关请教记录
+     * record: BmobBase.Ability | BmobBase.Social | BmobBase.Work,轨迹对象
+     */
+    function getMoreMessage(record) {
+        DataTipHelper.showLoading(jqReplyDataTip);
+        var type, query, pointerProperty;
+
+        type = record.get('type');
+        if (type == BmobBase.Record.Type.Ability) {
+            query = new Bmob.Query(BmobBase.AbilityConsultation);
+            pointerProperty = 'ability';
+        } else if (type == BmobBase.Record.Type.Social) {
+            query = new Bmob.Query(BmobBase.SocialConsultation);
+            pointerProperty = 'social';
+        } else if (type == BmobBase.Record.Type.Work) {
+            query = new Bmob.Query(BmobBase.WorkConsultation);
+            pointerProperty = 'work';
         } else {
             return;
         }
 
-        query.limit(recordLimit);
-        query.skip(recordPage * recordLimit);
-        query.find().then(function (r) {
-            if (r.length == 0) {
-                DataTipHelper.showNoMoreData(jqRecordDataTip);
-                return;
+        query.limit(messageLimit);
+        query.skip(messageLimit * messagePage);
+        query.equalTo(pointerProperty, record);
+        query.descending('createdAt');
+        query.include('consultant');
+        query.include('replyTo');
+        query.find().then(function (messages) {
+            console.log(messages);
+            for (var i=0; i<messages.length; i++) {
+                // 生成请教记录列表
+                jqReplyDataTip.before(createMessageItem(messages[i]));                
+            }            
+            // 返回的记录数量少于每页数量,则表明没有数据了
+            if (messages.length < messageLimit) {
+                DataTipHelper.showNoMoreData(jqReplyDataTip);
+            } else {
+                messagePage += 1;
+                DataTipHelper.showLoadMore(jqReplyDataTip);
             }
-
-            // 产生新的轨迹
-
-        }, function (e) {
-            LogHelper.error('login', error);
+        }, function (error) {
+            LogHelper.error('get messages', error);
             alert(ErrorHelper.translateError(error));
         });
     }
 
-    function createItem(records) {
-        var e, jqEle;
+    /**
+     * 保存要发表的请教的内容，并在页面上显示
+     * jqText: 提供着请教内容的jquery对象
+     * consultantId: 请教者id
+     * record: BmobBase.Ability | BmobBase.Social | BmobBase.Work,轨迹对象
+     * replyToId: 所要回复的用户的id
+     * replyToName: 所要回复的用户的姓名 
+     */
+    function saveConsultation(jqText, consultantId, record, replyToId, replyToName) {
+        var consultation, pointerProperty, type, text;
+        text = jqText.val();
+        if (StringHelper.isEmpty(text)) {
+            alert('您忘记填写要发表的内容了');
+            return;
+        }
+        
+        type = +record.get('type');
+        if (type == BmobBase.Record.Type.Ability) {
+            consultation = new BmobBase.AbilityConsultation();
+            pointerProperty = 'ability';
+        } else if (type == BmobBase.Record.Type.Social) {
+            consultation = new BmobBase.SocialConsultation();
+            pointerProperty = 'social';
+        } else if (type == BmobBase.Record.Type.Work) {
+            consultation = new BmobBase.WorkConsultation();
+            pointerProperty = 'work';
+        } else {
+            return;
+        }
+        if (replyToId) {
+            consultation.set('replyTo', BmobBase.User.createOnlyId(replyToId));
+        }
+        consultation.set('content', text);
+        consultation.set('consultant', BmobBase.User.createOnlyId(consultantId));
+        consultation.set('recordOwner', selectedRecord.get('owner'));
+        consultation.set(pointerProperty, record);
 
+        consultation.save().then(function (r) {
+            alert('发表成功');
+            jqText.val('');
+            if (r.get('replyTo')) {
+                r.get('replyTo').set('nickname', replyToName);
+            }            
+            jqPMessageList.prepend(createMessageItem(r, currentUser));
+        }, function (error) {
+            LogHelper.error('save consultation', error);
+            alert(ErrorHelper.translateError(error));
+        });
+    }
+
+    /**
+     * 保存用户提交的反馈
+     * jqTitle: 提供标题的jquery对象
+     * jqContent: 提供内容的jquery对象
+     * userId: 提交反馈的用户id
+     */
+    function saveFeedback(jqTitle, jqContent, userId) {
+        var title = jqTitle.val(),
+            content = jqContent.val(),
+            feedback;
+
+        if (StringHelper.isEmpty(title)) {
+            alert('您忘记填写标题了');
+            jqTitle.focus();
+            return;
+        }
+        if (StringHelper.isEmpty(content)) {
+            alert('您忘记填写反馈内容了');
+            jqContent.focus();
+            return;
+        }           
+
+        feedback = new BmobBase.Feedback();
+        feedback.set('owner', BmobBase.User.createOnlyId(userId));
+        feedback.set('title', title);
+        feedback.set('content', content);
+
+        feedback.save().then(function (r) {
+            alert('感谢您的意见，我们会尽力做得更好的！');
+            jqTitle.val('');
+            jqContent.val('');
+        }, function (error) {
+            LogHelper.error('save feedback', error);
+            alert(ErrorHelper.translateError(error));
+        });
+    }
+
+    /**
+     * 搜索轨迹
+     * jqKeyword: 提供搜索关键字的jquery对象
+     */
+    function searchRecord(jqKeyword) {
+        var keyword = jqKeyword.val(),
+            tables = ['Ability', 'Social', 'Work'],            
+            promises = [],            
+            query;
+
+        if (StringHelper.isEmpty(keyword)) {
+            alert('搜索关键词不能为空');
+            jqKeyword.focus();
+            return;
+        }
+
+        for (var i=0; i<tables.length; i++) {
+            query = new Bmob.Query(BmobBase[tables[i]]);
+            query.matches('title', new RegExp(keyword));
+            promises.push(query.find());
+        } 
+        Bmob.Promise.when(promises).then(function () {
+            console.log(arguments);
+        });
+    }
+
+    function createItem(itemIndex, records) {
+        var e, jqEle, owner;
+
+        owner = records[0].get('owner');
         e = $('#tp-item').html();
-        e = stringReplace(e, ['木子李']);
+        e = stringReplace(e, [owner.get('image'), owner.get('nickname'), itemIndex]);
         jqEle = $(e);
-        jqEle.find('.locus').append(createTimeline(records));
+        jqEle.find('.locus').append(createTimeline(itemIndex, records));
 
         // 轨迹前进/后退效果
         jqEle.find('.foreward-btn').click(function () {
@@ -150,16 +420,18 @@
         return jqEle;
     }
 
-    function createTimeline(records) {
+    function createTimeline(itemIndex, records) {
         var e, jqEle, recordType;
 
         e = '<div class="timeline"></div>';
         jqEle = $(e);
+        recordArray[itemIndex][0] = records[0];
         recordType = RecordType.Up;
         jqEle.append(createBigPoint());
         jqEle.append(createHr());
-        jqEle.append(createRecord(records[0], recordType, getRandomColor()));
+        jqEle.append(createRecord(0, records[0], recordType, getRandomColor()));
         for (i=1; i<records.length; i++) {
+            recordArray[itemIndex][i] = records[i];
             diffMonth = getMonthBetween(records[i-1].time, records[i].time);
             if (diffMonth != 0) {
                 jqEle.append(createHr());
@@ -167,7 +439,7 @@
                 recordType = 1 - recordType;
             }
             jqEle.append(createHr());
-            jqEle.append(createRecord(records[i], recordType, getRandomColor()));
+            jqEle.append(createRecord(i, records[i], recordType, getRandomColor()));
         }
         jqEle.append(createHr());
         jqEle.append(createBigPoint());
@@ -187,6 +459,10 @@
         jqEle.find('.record-brief').click(function () {
             $('.pop-up-cover').show();
             $('.pop-up').animate({opacity: 'show', height: 'show'});
+            var itemIndex = $(this).parents('.item').attr('item-index');
+                recordIndex = $(this).parent('.record').attr('record-index');
+            initPopup(recordArray[+itemIndex][+recordIndex]);
+            jqAnchorToPopup.click();
         });
 
         return jqEle;
@@ -217,16 +493,46 @@
         return jqEle;
     }
 
-    function createRecord(record, recordType, colorType) {
+    function createRecord(recordIndex, record, recordType, colorType) {
         var e, jqEle;
 
         e = '#tp-record-' + records[recordType];
         e = $(e).html();
-        e = stringReplace(e, [record.title, record.description, record.time, colors[colorType]]);
+        e = stringReplace(e, [record.get('title'), record.get('description'), getDateString(record.get('time')), colors[colorType], recordIndex]);
         jqEle = $(e);
         jqEle.css('left', nowLeft - reDis / 2 + spDis / 2);
         spCount += 1;
         nowLeft += spDis;
+        return jqEle;
+    }
+
+    function createMessageItem(consultation, consultant) {
+        var e, jqEle, extra = '';
+
+        consultant = consultant || consultation.get('consultant');
+        if (consultation.get('replyTo')) {
+            extra = ' 回复 ' + consultation.get('replyTo').get('nickname');
+        }
+        e = '#tp-message-item';
+        e = $(e).html();
+        e = stringReplace(e, [consultant.get('image'), consultant.get('nickname'), extra, consultation.get('content'), 
+                              consultation.createdAt, consultant.id]);
+        jqEle = $(e);        
+        // '回复'某人的请教
+        jqEle.find('.reply').click(function () {
+            var consultantName = jqEle.find('.publisher-name').html();
+            
+            // 使回复框位于当前请教项下方
+            jqEle.after(jqReplyItem);
+            ReplyBoxHelper.show(jqReplyItem, consultantName, function (e) {
+                // 点击回复框的'发表'按钮时触发的函数
+                e.preventDefault();
+                var text = ReplyBoxHelper.getReplyText(jqReplyItem),
+                    consultantId = jqEle.find('.consultant-id').val();
+
+                saveConsultation(ReplyBoxHelper.getJQReplyText(jqReplyItem), currentUser.id, selectedRecord, consultantId, consultantName);
+            });
+        });
         return jqEle;
     }
 
@@ -275,5 +581,27 @@
 
         return r;        
     }
+
+    // // 将所有轨迹记录按照拥有者来分开
+    // // 返回的是一个二维数组，每一个一维数组代表一个拥有者的完整轨迹
+    // function categoryByUser(allRecords) {
+    //     var result = [],
+    //         key = {},            
+    //         count = 0,
+    //         ownerId;
+
+    //     for (var i=0; i<allRecords.length; i++) {
+    //         ownerId = allRecords[i].get('owner').id;
+    //         if (ownerId in key) {
+    //             result[key[ownerId]].push(allRecords[i]);
+    //         } else {
+    //             key[ownerId] = count;
+    //             result[count] = [];
+    //             result[count].push(allRecords[i]);
+    //             count += 1;            
+    //         }
+    //     }
+    //     return result;
+    // }
 
 })()

@@ -21,8 +21,8 @@
         <div class="guide">
             <h1 class="title">Campus Locus</h1>
             <div class="search-box">
-                <button type="button" class="search-btn  v-center"></button>
-                <input type="text" class="search" placeholder="找工作实习试试"/>
+                <button type="button" class="search-btn  v-center" id="guide-search-btn"></button>
+                <input type="text" class="search" id="guide-search" placeholder="找工作实习试试"/>
             </div>
         </div>
         <div class="menu hide">
@@ -41,11 +41,11 @@
             <ul class="category-list">
                 <li class="selected" value="0"><a href="#">精选</a></li>
                 <li value="1"><a href="#">才艺才能</a></li>
-                <li value="2"><a href="#">实习工作</a></li>
-                <li value="3"><a href="#">社团经历</a></li>
+                <li value="2"><a href="#">社团经历</a></li>
+                <li value="3"><a href="#">实习工作</a></li>
             </ul>
             <div class="data-tip" id="record-data-tip">
-                <button class="load-more load-more-btn hide" type="button">加载更多 &nbsp;&nbsp; ></button>
+                <button class="load-more hide" type="button">加载更多 &nbsp;&nbsp; ></button>
                 <div class="no-more-data-tip hide">全部加载完毕</div>
                 <div class="spinner">
                     <div class="rect1"></div>
@@ -86,13 +86,14 @@
         <div class="user-panel">
             <div class="user-info">
                 <img id="user-head-img" class="v-center" src="" onerror="javascript:this.src='images/head.png'" />
-                <p id="user-name">木子李</p>
+                <p id="user-name"></p>
             </div>
             <ul class="user-btn-list">
                 <li><a class="ask" href="#">请教</a><div id="ask-record">2</div></li>
-                <li><a class="chat" href="#">协作交流</a><div id="chat-record">3</div></li>
+                <li><a class="chat" href="index_help.html">协作交流</a><div id="chat-record">3</div></li>
                 <li><a class="praise" href="#">点赞</a><div id="praise-record">5</div></li>
-                <li><a class="publish" href="#">发表文章</a><div id="publish-record">5</div></li>
+                <li><a class="publish" href="index_post.html">发表文章</a><div id="publish-record">5</div></li>
+                <li><a class="logout" href="#" id="logout-btn">退出</a></li>
             </ul>
         </div>
     </div>
@@ -122,11 +123,11 @@
                             <input type="text" id="feedback-title" />
                             <div class="clear"></div>
                         </li>
-                        <li>
+                        <!--<li>
                             <label for="user-id">用户ID：</label>
                             <input type="text" id="user-id" />
                             <div class="clear"></div>
-                        </li>
+                        </li>-->
                         <li>
                             <label for="feedback-content">反馈内容：</label>
                             <textarea id="feedback-content" rows="5"></textarea>
@@ -144,19 +145,20 @@
         <h5 class="copyright">Copyright &copy; 2016 campus locus All Rights Reserved.</h5>
     </div>
 
-    <div class="pop-up">
+    <a href="#pop-up" id="to-pop-up"></a>
+    <div class="pop-up" id="pop-up" name="pop-up">
         <button type="button" class="close-btn" id="pop-up-close-btn"></button>
-        <div class="record-detail-box">
+        <div class="pop-up-detail">
             <div class="author-info">
-                <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
-                <p class="record-time">2016-05-12</p>
+                <img class="author-head-img  v-center" id="popup-author-img" src="" onerror="javascript:this.src='images/head.png'" />
+                <p class="record-time" id="popup-record-time">2016-01-01</p>
                 <div class="record-base-info">
-                    <p class="author-name">木子李</p>
-                    <p class="record-title">春之歌</p>
-                </div>                
+                    <p class="author-name" id="popup-author-name">木子李</p>
+                    <p class="record-title" id="popup-record-title">春之歌</p>
+                </div>
             </div>
             <div class="record-detail">
-                <p class="record-description">
+                <p class="record-description" id="popup-record-description">
                     春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
                     春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
                     春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
@@ -165,22 +167,22 @@
                     春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！<br/>
                 </p>
                 <div class="record-extra-info">
-                    <div class="record-label">才艺才能</div>
+                    <div class="record-label" id="popup-record-label">才艺才能</div>
                     <ul class="action-list">
-                        <li><button type="button" class="ask">请教</button></li>
-                        <li><button type="button" class="chat">协作交流</button></li>
-                        <li><button type="button" class="praise"></button></li>    
+                        <li><button type="button" class="ask" id="popup-ask-btn">请教</button></li>
+                        <li><button type="button" class="chat" id="popup-chat-btn">协作交流</button></li>
+                        <li><button type="button" class="praise" id="popup-praise-btn"></button></li>    
                     </ul>
                     <div class="clear"></div>
                 </div>
                 <div class="gray-up-triangle"></div>
                 <div class="action-panel gray-bg">
                     <div class="publish-box">
-                        <input type="text" class="publish-text" id="publish-text" />
-                        <button type="button" class="publish-btn yellow-btn">发表</button>
+                        <input type="text" class="publish-text" id="popup-publish-text" />
+                        <button type="button" class="publish-btn yellow-btn" id="popup-publish-btn">发表</button>
                     </div>
-                    <ul class="message-list">
-                        <li class="message-item">
+                    <ul class="message-list" id="popup-message-list">
+                        <!--<li class="message-item">
                             <img class="publisher-head-img" src="" onerror="javascript:this.src='images/head.png'" />
                             <div class="message-body">
                                 <p class="message-content">
@@ -197,15 +199,25 @@
                                     <div class="clear"></div> 
                                 </div>                         
                             </div>                            
+                        </li>-->
+                        <li class="data-tip-item" id="reply-data-tip">
+                            <div class="data-tip">
+                                <button type="button" class="load-more hide">加载更多>></button>
+                                <div class="no-more-data-tip hide">全部加载完毕</div>
+                                <div class="spinner">
+                                    <div class="rect1"></div>
+                                    <div class="rect2"></div>
+                                    <div class="rect3"></div>
+                                    <div class="rect4"></div>
+                                    <div class="rect5"></div>
+                                </div>
+                            </div>                            
                         </li>
-                        <li class="reply-item">
+                        <li class="reply-item hide" id="popup-reply-item">
                             <div class="publish-box">
                                 <input type="text" class="publish-text" id="reply-text" placeholder="回复木子李" />
-                                <button type="button" class="publish-btn yellow-btn">发表</button>
+                                <button type="button" class="publish-btn yellow-btn" id="publish-btn">发表</button>
                             </div>
-                        </li>
-                        <li class="message-item">
-                            <button type="button" class="load-more">加载更多>></button>
                         </li>
                     </ul>                   
                 </div>                   
@@ -220,22 +232,22 @@
 
     <!-- item -->
     <script type="text/html" id="tp-item">
-        <div class="item">
+        <div class="item" item-index="{2}">
             <div class="author-info">
-                <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
-                <p class="author-name">{0}</p>
+                <img class="author-head-img  v-center" src="{0}" onerror="javascript:this.src='images/head.png'" />
+                <p class="author-name">{1}</p>
             </div>
             <div class="locus">
                 <button type="button" class="backward-btn  v-center"></button>
                 <button type="button" class="foreward-btn  v-center"></button>
             </div>
-        </div>
-        <hr class="gray-gradient"/>
+            <hr class="gray-gradient"/>
+        </div>        
     </script>
 
     <!-- record-up -->
     <script type="text/html" id="tp-record-up">
-        <div class="record  record-up  v-center">
+        <div class="record  record-up  v-center" record-index="{4}">
             <div class="record-brief">
                 <div class="title-bg title-bg-{3}"></div>
                 <p class="record-title">{0}</p>
@@ -252,7 +264,7 @@
 
     <!-- record-down -->
     <script type="text/html" id="tp-record-down">
-        <div class="record  record-down  v-center">
+        <div class="record  record-down  v-center" record-index="{4}">
             <p class="record-time">{2}</p>
             <div class="small-point  {3}-bg"></div>
             <div class="record-brief">
@@ -267,11 +279,65 @@
         </div>
     </script>
 
+    <!-- message-item -->
+    <script type="text/html" id="tp-message-item">
+        <li class="message-item">
+            <img class="publisher-head-img" src="{0}" onerror="javascript:this.src='images/head.png'" />
+            <div class="message-body">
+                <p class="message-content">
+                    <span class="publisher">
+                        <span class="publisher-name">{1}</span>
+                        <span class="publisher-extra">{2}</span>
+                        ：
+                    </span>
+                    {3}
+                </p>
+                <div class="message-extra">
+                    <div class="publish-time">{4}</div>
+                    <ul class="action-list">
+                        <li><button type="button" class="reply">回复</button></li>
+                        <li><button type="button" class="praise"></button></li>    
+                    </ul>
+                    <div class="clear"></div>
+                </div>                         
+            </div>    
+            <input type="hidden" value="{5}" class="consultant-id" />                        
+        </li>
+    </script>    
+
     <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/lib/bmob/bmob-min.js"></script>
+    <script src="lib/bmob/bmob-min.js"></script>
     <script src="js/utils/helper.js"></script>
     <script src="js/config/bmob_base.js"></script>    
-    <script src="js/index/index_effect.js"></script>
+    <script>
+        // 打开/关闭菜单的效果
+        $('.menu-link').click(function () {
+            $('.menu-cover').toggleClass('hide');
+            $('.menu').toggleClass('hide');
+            $('.guide').toggleClass('hide');
+            $(this).toggleClass('menu-link-close');
+        });
+
+        // 菜单按钮hover效果
+        $('.menu-btn-list a').mouseover(function () {
+            $(this).css('color', '#fff85f');
+            $(this).siblings('hr').css('border-top-color', '#fff85f');
+        }).mouseout(function () {
+            $(this).css('color', '#ffffff');
+            $(this).siblings('hr').css('border-top-color', '#ffffff');
+        });
+
+        // 类别选择效果
+        $('.category-list li').click(function () {
+            $(this).addClass('selected').siblings().removeClass('selected');
+        });
+
+        // 弹出框的关闭效果
+        $('#pop-up-close-btn').click(function () {
+            $('.pop-up-cover').hide();
+            $('.pop-up').hide();
+        });
+    </script>
     <script src="js/index/index.js"></script>
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>

@@ -33,7 +33,7 @@
             return;
         }
         if (StringHelper.isEmpty(password)) {
-            alert('验证码不能为空');
+            alert('密码不能为空');
             jqPassword.focus();
             return;
         }
@@ -43,14 +43,34 @@
         user.set('password', password);
         user.set('email', email);
 
-        user.signUp().then(function (user) {
-            alert('注册成功');
-            location.replace('modify_personal_edit.html');
+        user.signUp().then(function (r) {
+            createBestRecord(r).then(function (r) {
+                alert('注册成功');
+                location.replace('modify_personal_edit.html');
+            }, function (error) {
+                LogHelper.error('create best record', error);
+                alert(ErrorHelper.translateError(error));
+            });
         }, function (error) {
-            LogHelper.error('signUp', error);
+            LogHelper.error('sign up', error);
             alert(ErrorHelper.translateError(error));
             jqEmail.focus().select();
         });
+    }
+
+    function createBestRecord(user) {
+        var promises = [],
+            owner = BmobBase.User.createOnlyId(user.id),
+            bestRecord;
+            
+        for (var i=0; i<BmobBase.Record.TypeCount; i++) {
+            bestRecord = new BmobBase.BestRecord();
+            bestRecord.set('type', i+1);
+            bestRecord.set('owner', owner);
+            bestRecord.set('praise', 0);
+            promises.push(bestRecord.save());
+        }
+        return Bmob.Promise.when(promises);
     }
 
 })()

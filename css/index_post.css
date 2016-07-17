@@ -1,0 +1,184 @@
+
+.post_date{
+    position: absolute;top:23px;left: 22px;
+    font-size: 11px;
+}
+.post_day{
+    position: absolute;top:34px;left:48px;
+    font-size:16px;
+}
+.post_title{
+    position: absolute;top:27px;left:100px;
+    font-size:19px;
+}
+.post_BY{
+    position: absolute;top:61px;left:101px;
+    font-size:12px;
+}
+.post_context{
+    text-indent: 2em;
+    display: block;
+    width: 457px;height:73px;
+    position: absolute;top:96px;left:100px;
+    font-size:13px;
+    overflow: hidden;
+}
+.post_more{
+    position: absolute;right: 80px;top:156px;
+    font-size: 9px;
+}
+.post_hr{
+    width:455px;
+    position: absolute;left:100px;top:180px;
+}
+
+.post_labelname{
+    font-size:9px;
+}
+.post_label{
+    position: absolute;left:97px;top:220px;
+}
+.post_labelright{
+    position: relative;left:187px;
+    font-size: 9px;
+}
+
+/* 沛东 */
+.post-container {
+    padding-top: 80px;    
+}
+
+.post {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 40px;
+    width:630px;
+    height:267px; 
+    background: url("../images/post.png");
+}
+
+.post_more:focus,
+.post_more:hover {
+    color: #646464;
+}
+
+.pop-up {
+    width: 800px;  
+    top: 120px;
+}
+
+.author-info {
+    position: relative;
+    height: 70px;
+}
+
+.author-info .author-head-img {
+    width: 50px;
+    height: 50px;
+    left: 20px;
+    margin: auto;
+}
+
+.author-info .author-name {
+    margin-left: 85px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.author-info .record-base-info {
+    margin-left: 90px;
+    margin-right: 6em;
+    padding-top: 10px;
+    height: 100%;    
+}
+
+.author-info .record-base-info .author-name {
+    margin: 0;
+    height: auto;
+    line-height: normal;  
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4d4d4d;
+}
+
+.author-info .record-base-info .record-title {
+    margin-top: 10px;
+    color: #909090;
+}
+
+.author-info .record-time {
+    position: absolute;
+    width: 6em;
+    height: 1em;
+    font-size: 0.9em;
+    text-align: right;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.post-info {
+    margin-left: 85px;    
+    border: 1px solid gray;
+}
+
+.post-info .post-title {
+    display: block;
+    width: 100%;
+    height: 2.5em;
+    line-height: 2.5em;
+    font-size: 1.2em;
+    text-indent: 0.5em;
+}
+
+.post-info .post-description {
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    padding: 0.5em;
+}
+
+.post-info .label-list {
+    padding-left: 35px;
+    background-image: url("../images/label.png");
+    background-repeat: no-repeat;
+    background-position-x: 0.5em;
+    background-position-y: center;
+}
+
+.label-list input {
+    display: none;
+}
+
+.label-list label {
+    cursor: pointer;
+    width: 5em;
+    height: 30px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;    
+    color: gray;
+}
+
+.label-list label:hover {
+    background: #FFFA8B;
+}
+
+.label-list label.selected {
+    background: #FFF85F;
+}
+
+.publish-box {
+    text-align: right;
+}
+
+.publish-box .publish-btn {
+    margin-top: 15px;
+    padding: 8px 30px;
+}
+
+.data-tip .load-more {
+    border: none;
+}

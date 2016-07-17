@@ -103,7 +103,7 @@
 .wrap {
     position: relative;
     width: 70%;
-    min-height: 300px;
+    min-height: 500px;
     margin: 50px auto 0 auto;
 }
 
@@ -395,34 +395,8 @@
 }
 
 .pop-up {
-    display: none;
-    position: absolute;
     width: 800px;   
     top: 720px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 1003;
-    padding-top: 20px;
-}
-
-.pop-up-cover {
-    z-index: 1002;
-    display: none;
-}
-
-.pop-up .close-btn {
-    position: absolute;
-    right: 0;
-}
-
-.record-detail-box {
-    margin-right: 70px;
-    margin-top: 50px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-right: 40px;
-    background-color: white;
 }
 
 .author-info .record-base-info {
@@ -458,12 +432,12 @@
     margin: auto;
 }
 
-.record-detail-box .record-detail {
+.record-detail {
     margin-top: 20px;
     margin-left: 90px;
 }
 
-.record-detail-box .record-detail .record-description {
+.record-detail .record-description {
     color: #4d4d4d;
 }
 
@@ -521,7 +495,8 @@
     position: relative;
 }
 
-.message-list .message-item {
+.message-list .message-item,
+.message-list .data-tip-item {
     border-top: 1px solid #cccccc;
     padding-top: 20px;
     padding-bottom: 20px;

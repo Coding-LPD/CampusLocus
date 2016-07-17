@@ -27,11 +27,11 @@
 </div>
 
 <div id="myRecord">
-    <table class="otherRecord_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table class="otherRecord_table" id="my-item-container" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td colspan="4" class="record_title font_fam">我的记录(3)</td>
+            <td colspan="4" class="record_title font_fam">我的记录(<span id="my-item-length">3</span>)</td>
         </tr>
-        <tr>
+        <!--<tr>
             <td width="2%" rowspan="2">&nbsp;</td>
             <td width="8%" rowspan="2"><img src="images/head.png" class="record_img center"></td>
             <td width="45%" class="font_fam record_name">木子李</td>
@@ -57,15 +57,15 @@
         </tr>
         <tr>
             <td class="font_fam record_context">运营维护</td>
-        </tr>
+        </tr>-->
     </table>
 </div>
 <div id="otherRecord">
-    <table class="otherRecord_table" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table class="otherRecord_table" id="other-item-container" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td colspan="6" class="record_title font_fam">他人记录（3）</td>
+            <td colspan="6" class="record_title font_fam">他人记录（<span id="other-item-length">3</span>）</td>
         </tr>
-        <tr>
+        <!--<tr>
             <td width="1%">&nbsp;</td>
             <td width="8%"><img src="images/head.png" class="record_img center"></td>
             <td width="11%"class="record_name font_fam">木子李</td>
@@ -88,14 +88,13 @@
             <td><img class="record_img1" src="images/arrow_double1.png"></td>
             <td><img src="images/head.png" class="record_img center"></td>
             <td class="record_name arrow">木子李</td>
-        </tr>
+        </tr>-->
     </table>
 </div>
 
 <a href="#top"><button id="go_up"></button></a>
 
-<button id="add" class="boder_clear">
-</button>
+<!--<button id="add" class="boder_clear"></button>-->
 
 
 <div id="footer">
@@ -129,5 +128,51 @@
     </div>
     <div id="copyright" class="center font_9"><small>Copyright &copy; 2016 campus locus All Rights Reserved.</small></div>
 </div>
+
+    <!-- Template -->
+
+    <!-- my-item -->
+    <script type="text/html" id="tp-my-item">
+        <tr>
+            <td width="2%" rowspan="2">&nbsp;</td>
+            <td width="8%" rowspan="2"><img class="record_img center" src="{0}" onerror="javascript:this.src='images/head.png'"></td>
+            <td width="45%" class="font_fam record_name">{1}</td>
+            <td width="45%" rowspan="2" class="font_fam record_time">{2}更新</td>
+        </tr>
+        <tr>
+            <td class="font_fam record_context">{3}</td>
+        </tr>
+    </script>
+
+    <!-- other-item-ask -->
+    <script type="text/html" id="tp-other-item-ask">
+        <tr>
+            <td width="1%">&nbsp;</td>
+            <td width="8%"><img class="record_img center" src="{0}" onerror="javascript:this.src='images/head.png'"></td>
+            <td width="11%"class="record_name font_fam">{1}</td>
+            <td width="20%"><img class="record_img1" src="images/arrow_single1.png"></td>
+            <td width="8%"><img class="record_img center" src="{2}" onerror="javascript:this.src='images/head.png'"></td>
+            <td width="48%" class="record_name font_fam">{3}</td>
+        </tr>
+    </script>
+
+    <!-- other-item-help -->
+    <script type="text/html" id="tp-other-item-help">
+        <tr>
+            <td width="1%">&nbsp;</td>
+            <td width="8%"><img class="record_img center" src="{0}" onerror="javascript:this.src='images/head.png'"></td>
+            <td width="11%"class="record_name font_fam">{1}</td>
+            <td width="20%"><img class="record_img1" src="images/arrow_double1.png"></td>
+            <td width="8%"><img class="record_img center" src="{2}" onerror="javascript:this.src='images/head.png'"></td>
+            <td width="48%" class="record_name font_fam">{3}</td>
+        </tr>
+    </script>
+
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="lib/bmob/bmob-min.js"></script>
+    <script src="js/utils/helper.js"></script>
+    <script src="js/config/bmob_base.js"></script>    
+    <script src="js/index_record.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

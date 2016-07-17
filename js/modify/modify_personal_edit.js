@@ -52,7 +52,7 @@
     }
 
     function getUserInfo() {
-        var user = Bmob.User.current(),
+        var user = BmobBase.User.current(),
             query = new Bmob.Query(Bmob.User),
             promise;
 
@@ -100,7 +100,7 @@
         currentUser.set('school', school);
         currentUser.set('academy', academy);
         currentUser.set('major', major);
-        currentUser.set('hobby', hobby); 
+        currentUser.set('hobby', hobby);
 
         // 先上传图片，才能获取用户头像的url，之后再保存用户信息
         uploadImage(currentUser.get('email')).then(function (r) {
@@ -108,16 +108,24 @@
                 currentUser.set('image', r.url());
             }
             currentUser.save().then(function (r) {
+                BmobBase.User.edit(currentUser);
                 alert('保存成功');
                 location.href = 'modify_personal.html';
             }, function (error) {
                 LogHelper.error('save user', error);
                 alert(ErrorHelper.translateError(error));        
             });
-        });      
+        });
     }
 
     function cancelEdit() {
+        var nickname = jqNickname.val();
+
+        if (StringHelper.isEmpty(nickname)) {
+            alert('姓名不能为空');
+            jqNickname.focus();
+            return;
+        }
         location.href = 'modify_personal.html';
     }
 

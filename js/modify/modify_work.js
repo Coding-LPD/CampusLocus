@@ -9,9 +9,8 @@
         checkLogin();
         init();
         currentUser = BmobBase.User.current();
-                
-        getAbility(currentUser).then(function (data) {
-            createAbilityView(data, jqContainer);
+        getWork(currentUser).then(function (data) {
+            createWorkView(data, jqContainer);
         });
     });
 
@@ -19,8 +18,8 @@
         jqContainer = $('#container');
     }
 
-    function getAbility(user) {
-        var query = new Bmob.Query(BmobBase.Ability),
+    function getWork(user) {
+        var query = new Bmob.Query(BmobBase.Work),
             promise;
 
         query.equalTo('owner', user);
@@ -28,7 +27,7 @@
         promise = query.find().then(function (r) {
             return Bmob.Promise.as(r);
         }, function (error) {
-            LogHelper.error('get ability', error);
+            LogHelper.error('get work', error);
             alert(ErrorHelper.translateError(error));
             return Bmob.Promise.error(error);
         });
@@ -36,7 +35,7 @@
         return promise;
     }
 
-    function createAbilityView(data, jqParent) {
+    function createWorkView(data, jqParent) {
         var item, container, lastTime, diffYear = 1;
 
         for (var i=0; i<data.length; i++) {
@@ -64,12 +63,11 @@
         return $(e);
     }
 
-    function createItem(index, ability) {
+    function createItem(index, work) {
         var e, params;
 
-        params = [ability.get('time').getMonth()+1, ability.get('time').getDate(), ability.get('title'),
-                  ability.get('partner'), ability.get('nature'), ability.get('result'), 
-                  ability.get('description'), index + 1];
+        params = [work.get('time').getMonth()+1, work.get('time').getDate(), work.get('title'),
+                  work.get('company'), work.get('description'), index + 1];                  
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 

@@ -30,7 +30,7 @@
     }
 
     function getUserInfo() {
-        var user = Bmob.User.current(),
+        var user = BmobBase.User.current(),
             query = new Bmob.Query(Bmob.User),
             promise;
 
@@ -44,7 +44,7 @@
         var noValue = '未填',
             id = user.id || noValue,
             nickname = user.get('nickname') || noValue,
-            age = user.get('age') || noValue,
+            age = user.get('age') || 0,
             gender = user.get('gender'),
             phone = user.get('phone') || noValue,
             email = user.get('email'),

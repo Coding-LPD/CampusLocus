@@ -59,23 +59,45 @@ AjaxHelper.isRequesting = function (promise) {
 function DataTipHelper() {}
 
 DataTipHelper.showLoadMore = function(jqEle) {
-    jqEle.children('.load-more-btn').removeClass('hide');
-    jqEle.children('.no-more-data-tip').addClass('hide');
-    jqEle.children('.spinner').addClass('hide');
+    jqEle.find('.load-more').removeClass('hide');
+    jqEle.find('.no-more-data-tip').addClass('hide');
+    jqEle.find('.spinner').addClass('hide');
 };
 
 DataTipHelper.showNoMoreData = function (jqEle) {
-    jqEle.children('.load-more-btn').addClass('hide');
-    jqEle.children('.no-more-data-tip').removeClass('hide');
-    jqEle.children('.spinner').addClass('hide');
+    jqEle.find('.load-more').addClass('hide');
+    jqEle.find('.no-more-data-tip').removeClass('hide');
+    jqEle.find('.spinner').addClass('hide');
 };
 
 DataTipHelper.showLoading = function (jqEle) {
-    jqEle.children('.load-more-btn').addClass('hide');
-    jqEle.children('.no-more-data-tip').addClass('hide');
-    jqEle.children('.spinner').removeClass('hide');
+    jqEle.find('.load-more').addClass('hide');
+    jqEle.find('.no-more-data-tip').addClass('hide');
+    jqEle.find('.spinner').removeClass('hide');
 }
 
+/**
+ * 回复信息框辅助类
+ */
+function ReplyBoxHelper() {}
+
+ReplyBoxHelper.show = function (jqEle, replyTo, publishBtnClick) {
+    jqEle.removeClass('hide');        
+    jqEle.find('#reply-text').attr('placeholder', '回复' + replyTo).focus();
+    jqEle.find('#publish-btn').click(publishBtnClick)
+};
+
+ReplyBoxHelper.hide = function (jqEle) {
+    jqEle.addClass('hide');
+};
+
+ReplyBoxHelper.getReplyText = function (jqEle) {
+    return jqEle.find('#reply-text').val();
+};
+
+ReplyBoxHelper.getJQReplyText = function (jqEle) {
+    return jqEle.find('#reply-text');
+}
 
 /** public function **/
 
@@ -159,6 +181,27 @@ function getYearBetween(start, end) {
     return endDate.getFullYear() - startDate.getFullYear();
 }
 
+// 获取日期的yyyy-MM-dd格式
+function getDateString(date) {
+    var result = '', year, month, day;
+    if (!(date instanceof Date)) {
+        date = new Date(date);
+    }
+
+    year = date.getFullYear();
+    month = date.getMonth();
+    day = date.getDate();
+    if (month > 0 && month < 10) {
+        month += 1;
+        month = '0' + month;
+    }
+    if (day > 0 && day < 10) {
+        day = '0' + day;
+    }
+    result = year + '-' + month + '-' + day;
+    return result;
+}
+
 /**
  * 字符串格式化
  *    str: 字符串   要格式化的字符串
@@ -204,4 +247,19 @@ function convertImagePath(file) {
 function getFileExtension(filename) {
     var lastDot = filename.lastIndexOf('.');
     return filename.slice(lastDot);
+}
+
+function compare(property) {
+    return function (object1, object2) {
+        var value1 = object1[property],
+            value2 = object2[property];
+
+        if (value1 > value2) {
+            return -1;
+        } else if (value1 < value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

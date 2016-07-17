@@ -7,6 +7,7 @@
     <title>Community - Campus Locus</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
     <link href="css/modify.css" rel="stylesheet">
     <link href="images/logo_28px.png" rel="shortcut icon">
 
@@ -58,7 +59,7 @@
             onclick="window.location='modify_work.html'"></button>
 
     <div id="container" class="div-timeline div-timeline-width">
-        <div id="container1">
+        <!--<div id="container1">
             <div class="div-timeline1">
                 <label id="date_year1" class="date-year">2016</label>
                 <label class="year">年</label>
@@ -99,7 +100,6 @@
                         <span id="community_position1" class="others-ability">组织部部长</span>
                         <br/>
                         <div id="community_details1" class="details-ability">
-                    <span>
                         一路走来，跌跌撞撞...<br/>
                         她是才华照人的诗人，“你是爱，是暖，是希望，你是人间的四月天”；<br/>
                         她是设计师，是新中国国徽的设计者之一；她是建筑师，参与设计人民英雄纪念碑；
@@ -111,12 +111,12 @@
                         她是设计师，是新中国国徽的设计者之一；她是建筑师，参与设计人民英雄纪念碑；
                         她被称为“民国第一代才女”。一身诗意千寻瀑，万古人间四月天，她就是林徽因。
                         1904年的今天，林徽因出生。一起重温才女情愫。
-                    </span>
                         </div>
                         <br/>
                         <a id="community_fulltext1" class="fulltext-ability" href="javascript:void(0);"
                            onclick="showFullText('community',1)">查看全文..</a>
                     </div>
+                    <div class="clear"></div>
                 </div>
             </div>
 
@@ -231,24 +231,86 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <button type="button" id="button_add" class="button-add-ability inline-block"
             onmousedown="addMouseDown()" onmouseup="addMouseUp()"
             onclick="window.location = 'modify_community_add.html'"></button>
 
-    <button type="button" id="button_next" class="button-next-inactive inline-block"></button>
+    <button type="button" id="button_next" class="button-next-inactive inline-block"></button>    
 </div>
+
+    <!-- Template -->
+
+    <!-- container -->
+    <script id="tp-container" type="text/html">
+        <div>
+            <div class="div-timeline1">
+                <label id="date_year1" class="date-year">{0}</label>
+                <label class="year">年</label>
+                <div class="collapse-click inline-block" onclick="collapse({0})">
+                    <img id="collapse{0}" src="images/open.png" class="div-timeline1-spread"/>
+                </div>
+                <img src="images/clock.png"/>
+            </div>
+
+            <div class="div-timeline2"></div>
+        </div>
+    </script>
+
+    <!-- container's item -->
+    <script id="tp-container-item" type="text/html">
+        <div>
+            <div class="div-timeline3 white">
+                <div class="label-date inline-block">
+                    <label id="date_month1">{0}</label>
+                </div>
+                <div class="inline-block">
+                    <label>月</label>
+                </div>
+                <div class="label-date inline-block">
+                    <label id="date_day1">{1}</label>
+                </div>
+                <div class="inline-block">
+                    <label>日</label>
+                </div>
+                <img src="images/circle.png" class="timeline-circle"/>
+                <span id="community1" class="name-ability">
+                    <span class="community-title">{2}</span>
+                <button type="button" id="button_edit1" class="button-edit-personal"
+                        onmouseout="editMouseOut(1)" onmouseover="editMouseOver(1)" onclick="editCommunity()"></button>
+                </span>
+            </div>
+
+            <div>
+                <div class="div-timeline4 inline-block" id="vertical_line1" style="height: 230px"></div>
+                <div class="inline-block div-timeline4-content">
+                    <span id="community_name1" class="others-ability">{3}</span>
+                    <br/>
+                    <span id="community_position1" class="others-ability">{4}</span>
+                    <br/>
+                    <div id="community_details{6}" class="details-ability">{5}</div>
+                    <br/>
+                    <a id="community_fulltext{6}" class="fulltext-ability" href="javascript:void(0);"
+                        onclick="showFullText('community',{6})">查看全文..</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery-1.11.3.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
-
-<script src="js/modify.js"></script>
-
+<script src="lib/bmob/bmob-min.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/helper.js"></script>
+<script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_community.js"></script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
 <script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
 

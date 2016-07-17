@@ -9,18 +9,18 @@
         checkLogin();
         init();
         currentUser = BmobBase.User.current();
-                
-        getAbility(currentUser).then(function (data) {
-            createAbilityView(data, jqContainer);
+
+        getSocial(currentUser).then(function (data) {
+            createSocialView(data, jqContainer)
         });
-    });
+    }); 
 
     function init() {
         jqContainer = $('#container');
     }
 
-    function getAbility(user) {
-        var query = new Bmob.Query(BmobBase.Ability),
+    function getSocial(user) {
+        var query = new Bmob.Query(BmobBase.Social),
             promise;
 
         query.equalTo('owner', user);
@@ -28,7 +28,7 @@
         promise = query.find().then(function (r) {
             return Bmob.Promise.as(r);
         }, function (error) {
-            LogHelper.error('get ability', error);
+            LogHelper.error('get social', error);
             alert(ErrorHelper.translateError(error));
             return Bmob.Promise.error(error);
         });
@@ -36,7 +36,7 @@
         return promise;
     }
 
-    function createAbilityView(data, jqParent) {
+    function createSocialView(data, jqParent) {
         var item, container, lastTime, diffYear = 1;
 
         for (var i=0; i<data.length; i++) {
@@ -64,16 +64,14 @@
         return $(e);
     }
 
-    function createItem(index, ability) {
+    function createItem(index, social) {
         var e, params;
 
-        params = [ability.get('time').getMonth()+1, ability.get('time').getDate(), ability.get('title'),
-                  ability.get('partner'), ability.get('nature'), ability.get('result'), 
-                  ability.get('description'), index + 1];
+        params = [social.get('time').getMonth()+1, social.get('time').getDate(), social.get('title'),
+                  social.get('association'), social.get('position'), social.get('description'),index + 1];
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 
         return $(e);
     }
-
 })()

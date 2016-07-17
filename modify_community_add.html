@@ -96,9 +96,9 @@
         <br />
         <br />
         <button type="submit" id="button_submit" class="button-submit-ability"
-                onmouseover="submitMouseOver()"  onmouseout="submitMouseOut()" onclick="window.location='modify_community_finished.html'">保存</button>
+                onmouseover="submitMouseOver()"  onmouseout="submitMouseOut()">保存</button>
         <button type="button" id="button_cancel" class="button-cancel-ability"
-                onmouseover="cancelMouseOver()"  onmouseout="cancelMouseOut()" onclick="window.location='modify_community_finished.html'">取消</button>
+                onmouseover="cancelMouseOver()"  onmouseout="cancelMouseOut()">取消</button>
     </form>
 
     <button type="button" id="button_next" class="button-next-inactive inline-block"></button>
@@ -109,8 +109,12 @@
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.js"></script>
-
-<script src="js/modify.js"></script>
+<script src="lib/bmob/bmob-min.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/helper.js"></script>
+<script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_community_add.js"></script>
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 
 </body>
 </html>
