@@ -1,7 +1,7 @@
 
 (function () {
 
-    var jqContainer,
+    var jqContainer, jqEmptyTip, jqLoading,
         currentUser;
 
     $(document).ready(function () {
@@ -10,12 +10,20 @@
         init();
         currentUser = BmobBase.User.current();
         getWork(currentUser).then(function (data) {
-            createWorkView(data, jqContainer);
+            if (data.length <= 0) {            
+                jqEmptyTip.removeClass('hide');
+                jqContainer.addClass('hide');
+                jqLoading.addClass('hide');
+            } else {
+                createWorkView(data, jqContainer);
+            }
         });
     });
 
     function init() {
         jqContainer = $('#container');
+        jqEmptyTip = $('#empty-tip');
+        jqLoading = $('.spinner');
     }
 
     function getWork(user) {
@@ -52,6 +60,7 @@
             jqParent.append(container);
             lastTime = data[i].get('time');
         }
+        jqLoading.addClass('hide');
     }
 
     function createContainer(year) {
@@ -67,7 +76,7 @@
         var e, params;
 
         params = [work.get('time').getMonth()+1, work.get('time').getDate(), work.get('title'),
-                  work.get('company'), work.get('description'), index + 1];                  
+                  work.get('company'), work.get('description'), index + 1, work.id];                  
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 

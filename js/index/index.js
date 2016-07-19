@@ -8,8 +8,6 @@
         jqPRecordTime, jqPAuthorImg, jqPAuthorName, jqPRecordTitle, jqPRecordDesc, jqPRecordLabel, jqPPublishText, jqPMessageList,  
         jqPAskBtn, jqPChatBtn, jqPPraiseBtn, jqPPublishBtn,
         jqReplyDataTip, jqReplyItem, jqAnchorToPopup,
-        // 反馈相关
-        jqFeedbackTitle, jqFeedbackContent, jqFeedbackSubmitBtn,
         // 顶部搜索框
         jqGuideSearchText, jqGuideSearchBtn;
 
@@ -24,8 +22,10 @@
         bpHrDiff = 10, // big-point与hr直接相隔的距离
         nowLeft = 0, // timeline中新元素起始位置
         nowType = 0, // 当前选中的轨迹类别
-        recordPage = 0,  // 当前轨迹记录的页数
-        recordLimit = 3,  // 轨迹记录每页的条数 
+        localPage = 0,  // 本地显示的记录页数
+        localLimit = 3,  // 本地显示的每页的记录的数量
+        remotePage = 0,  // 远程获取的轨迹记录的页数
+        remoteLimit = 3,  // 远程获取的每页轨迹的数量 
         messagePage = 0, // 请教列表的页数
         messageLimit = 3,  // 请教列表每页的条数
         currentUser = 1, 
@@ -53,8 +53,13 @@
         init();
         initEvent();        
         currentUser = BmobBase.User.current();
-        setUserInfo(currentUser);
-        getMoreRecord(nowType);
+        if (currentUser == null) {
+            jqUserName.html('请登录');
+        } else {
+            setUserInfo(currentUser);
+        }        
+        // getMoreRecord(nowType);
+        showLocalRecord();
     });
 
     function init() {
@@ -80,10 +85,6 @@
         jqReplyDataTip = $('#reply-data-tip');
         jqReplyItem = $('#popup-reply-item');
         jqAnchorToPopup = $('#to-pop-up');
-        // 反馈相关
-        jqFeedbackTitle = $('#feedback-title');
-        jqFeedbackContent = $('#feedback-content');
-        jqFeedbackSubmitBtn = $('#feedback-submit-btn');
         // 顶部搜索框
         jqGuideSearchText = $('#guide-search');
         jqGuideSearchBtn = $('#guide-search-btn');
@@ -103,15 +104,17 @@
                 return;
             }
             nowType = $(this).val();
-            recordPage = 0;
+            localPage = 0;
             recordArray = [];
             jqMainPanel.find('.item').remove();
-            getMoreRecord(nowType);
+            // getMoreRecord(nowType);
+            showLocalRecord()
         });
         // 加载轨迹的'加载更多'
         jqRecordDataTip.find('.load-more').click(function (e) {
             e.preventDefault();
-            getMoreRecord(nowType);
+            // getMoreRecord(nowType);
+            showLocalRecord()
         });
         // 发表请教内容
         jqPPublishBtn.click(function (e) {
@@ -128,11 +131,6 @@
         jqReplyDataTip.find('.load-more').click(function (e) {
             e.preventDefault();
             getMoreMessage(selectedRecord);
-        });
-        // 提交反馈内容
-        jqFeedbackSubmitBtn.click(function (e) {
-            e.preventDefault();
-            saveFeedback(jqFeedbackTitle, jqFeedbackContent, currentUser.id);
         });
         // 实现搜索框搜索
         jqGuideSearchBtn.click(function (e) {
@@ -172,24 +170,53 @@
         getMoreMessage(record);
     }
 
+    function showLocalRecord() {
+        DataTipHelper.showLoading(jqRecordDataTip);
+
+        var i, index;
+        // 本地无数据则先去远程获取，一次性将数据获取完
+        if (recordArray.length <= 0) {
+            getMoreRecord(nowType).then(function (r) {
+                showLocalRecord();
+            });
+        } else {            
+            // 分页显示本地数据
+            for (i=0; i<localLimit; i++) {
+                index = localPage*localLimit+i;
+                // 有数据则显示，无数据则显示加载完毕
+                if (recordArray[index]) {
+                    jqRecordDataTip.before(createItem(index, recordArray[index]));
+                }
+                else {
+                    DataTipHelper.showNoMoreData(jqRecordDataTip);
+                }
+            }
+            // 还有下一条记录则显示加载更多按钮
+            if (recordArray[index+1]) {
+                DataTipHelper.showLoadMore(jqRecordDataTip);
+            } else {
+                DataTipHelper.showNoMoreData(jqRecordDataTip);
+            }
+            localPage += 1;
+        }
+    }
+
     /**
      * 获取下一页轨迹记录，并在页面上显示出来
      * selectedType: 用户选中的轨迹类别
      */
     function getMoreRecord(selectedType) {
-        DataTipHelper.showLoading(jqRecordDataTip);
-
         var userQuery;
         userQuery = new Bmob.Query(BmobBase.BestRecord);
-        userQuery.limit(recordLimit);
-        userQuery.skip(recordPage * recordLimit);
+        // userQuery.limit(remoteLimit);
+        // userQuery.skip(remotePage * remoteLimit);
         userQuery.descending('praise');
         // 不是'精选'类别时需要指定特定轨迹类型
         if (selectedType != 0) {
             userQuery.equalTo('type', selectedType);
         }
         // 按'赞数'排序，依次获取到用户
-        userQuery.find().then(function (data) {
+        return userQuery.find().then(function (data) {
             var promises = [],
                 recordCount = data.length,
                 owner, 
@@ -216,24 +243,26 @@
                 promises.push(recordQuery.find());  
             }
             // 当所有记录获取完毕，开始生成并插入DOM
-            Bmob.Promise.when(promises).then(function () {
+            return Bmob.Promise.when(promises).then(function () {
                 var data;
                 for (var i=0; i<arguments.length; i++) {
-                    recordArray[recordArray.length] = [];
+                    // recordArray[recordArray.length] = [];
                     data = arguments[i];
                     if (data.length <= 0) {
                         continue;
                     }
-                    // 产生新的轨迹
-                    jqRecordDataTip.before(createItem(recordArray.length-1, data));
+                    recordArray[recordArray.length] = data;
+                    // // 产生新的轨迹
+                    // jqRecordDataTip.before(createItem(recordArray.length-1, data));
                 }
-                // 返回的记录数量少于每页数量,则表明没有数据了
-                if (recordCount < recordLimit) {
-                    DataTipHelper.showNoMoreData(jqRecordDataTip);
-                } else {
-                    recordPage += 1;
-                    DataTipHelper.showLoadMore(jqRecordDataTip);
-                }
+                return new Bmob.Promise.as(data);
+                // // 返回的记录数量少于每页数量,则表明没有数据了
+                // if (recordCount < remoteLimit) {
+                //     DataTipHelper.showNoMoreData(jqRecordDataTip);
+                // } else {
+                //     remotePage += 1;
+                //     DataTipHelper.showLoadMore(jqRecordDataTip);
+                // }
             });
         });
     }
@@ -336,43 +365,6 @@
     }
 
     /**
-     * 保存用户提交的反馈
-     * jqTitle: 提供标题的jquery对象
-     * jqContent: 提供内容的jquery对象
-     * userId: 提交反馈的用户id
-     */
-    function saveFeedback(jqTitle, jqContent, userId) {
-        var title = jqTitle.val(),
-            content = jqContent.val(),
-            feedback;
-
-        if (StringHelper.isEmpty(title)) {
-            alert('您忘记填写标题了');
-            jqTitle.focus();
-            return;
-        }
-        if (StringHelper.isEmpty(content)) {
-            alert('您忘记填写反馈内容了');
-            jqContent.focus();
-            return;
-        }           
-
-        feedback = new BmobBase.Feedback();
-        feedback.set('owner', BmobBase.User.createOnlyId(userId));
-        feedback.set('title', title);
-        feedback.set('content', content);
-
-        feedback.save().then(function (r) {
-            alert('感谢您的意见，我们会尽力做得更好的！');
-            jqTitle.val('');
-            jqContent.val('');
-        }, function (error) {
-            LogHelper.error('save feedback', error);
-            alert(ErrorHelper.translateError(error));
-        });
-    }
-
-    /**
      * 搜索轨迹
      * jqKeyword: 提供搜索关键字的jquery对象
      */
@@ -425,14 +417,14 @@
 
         e = '<div class="timeline"></div>';
         jqEle = $(e);
-        recordArray[itemIndex][0] = records[0];
+        // recordArray[itemIndex][0] = records[0];
         recordType = RecordType.Up;
         jqEle.append(createBigPoint());
         jqEle.append(createHr());
         jqEle.append(createRecord(0, records[0], recordType, getRandomColor()));
         for (i=1; i<records.length; i++) {
-            recordArray[itemIndex][i] = records[i];
-            diffMonth = getMonthBetween(records[i-1].time, records[i].time);
+            // recordArray[itemIndex][i] = records[i];
+            diffMonth = getMonthBetween(records[i-1].get('time'), records[i].get('time'));
             if (diffMonth != 0) {
                 jqEle.append(createHr());
                 jqEle.append(createBigPoint());

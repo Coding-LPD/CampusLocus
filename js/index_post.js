@@ -60,7 +60,7 @@
 
         if (currentItems.length > 0) {
             showItems = currentItems.slice(localPage * localLimit, (localPage + 1) * localLimit);    
-            updatePostView(showItems, jqPostContainer);
+            updatePostView(showItems, jqDataTip);
             localPage += 1;
             if (localPage * localLimit < currentItems.length) {
                 DataTipHelper.showLoadMore(jqDataTip);
@@ -84,9 +84,10 @@
                 data = data.concat(arguments[i]);             
             }
             data = data.sort(compare('createdAt'));
-            currentItems = currentItems.concat(data);   
+            currentItems = currentItems.concat(data);
+            // 显示文章
             showItems = currentItems.slice(localPage * localLimit, (localPage + 1) * localLimit);    
-            updatePostView(showItems, jqPostContainer);
+            updatePostView(showItems, jqDataTip);
             localPage += 1;
             if (localPage * localLimit < currentItems.length) {
                 DataTipHelper.showLoadMore(jqDataTip);
@@ -136,7 +137,7 @@
 
     function updatePostView(posts, jqParent) {
         for (var i=0; i<posts.length; i++) {
-            jqParent.append(createPostItem(posts[i]));
+            jqParent.before(createPostItem(posts[i]));
         }
     }
 

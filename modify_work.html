@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Work - Campus Locus</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
     <link href="css/modify.css" rel="stylesheet">
     <link href="images/logo_28px.png" rel="shortcut icon">
 
@@ -28,24 +29,25 @@
     </div>
     <div class="padding-clear width-navbar return-index inline-block">
         <!--a设置inline-block后成为块级元素，可以包含img-->
-        <a  id="index" href="index.html" class="font-navbar inline-block index" onmouseover="indexMouseOver()" onmouseout="indexMouseOut()">
+        <a id="index" href="index.html" class="font-navbar inline-block index" onmouseover="indexMouseOver()"
+           onmouseout="indexMouseOut()">
             <img id="home_cut" src="images/home.png"/>&nbsp;返回首页
         </a>
     </div>
 </div>
 
 <div class="margin-clear padding-clear height-menu width-full" style="margin-bottom: 0em">
-    <div class="modify-unselected inline-block" style="margin-left: 26.4%">
+    <div class="modify-unselected inline-block" style="margin-left: 36.5%">
         <a href="modify_personal.html">个人信息</a>
-    </div>
-    <div class="modify-unselected inline-block" style="margin-left: 5%">
-        <a href="modify_ability.html">才艺才能</a>
     </div>
     <div class="modify-unselected inline-block" style="margin-left: 18%">
         <a href="modify_community.html">社团经历</a>
     </div>
+    <div class="modify-unselected inline-block" style="margin-left: 5%">
+        <a href="modify_ability.html">才艺才能</a>
+    </div>
     <div class="modify-selected center">
-        <a href="modify_work.html" style="color: rgb(255,204,0);">工作实习</a>
+        <a href="modify_worl.html" style="color: rgb(255,204,0);">工作实习</a>
     </div>
 </div>
 
@@ -56,28 +58,101 @@
 
 <div class="pagebody">
     <button type="button" id="button_preview" class="button-preview-active inline-block"
-            onmousedown="previewMouseDown()" onmouseup="previewMouseUp()" onclick="window.location='modify_ability.html'"></button>
+            onmousedown="previewMouseDown()" onmouseup="previewMouseUp()"
+            onclick="window.location='modify_personal.html'"></button>
 
-    <div class="empty-ability margin-clear">
+    <div id="container" class="div-timeline div-timeline-width"></div>
+
+    <div id="empty-tip" class="empty-ability margin-clear hide">
         <img src="images/empty.png" />
         <span class="gray">您当前内容为空，快去添加一些经历吧！</span>
         <img src="images/arrow.png" style="vertical-align: top;" />
     </div>
 
-    <button type="button" id="button_add" class="button-add-ability"
-            onmousedown="addMouseDown()" onmouseup="addMouseUp()" onclick="window.location='modify_work_add.html'"></button>
+    <button type="button" id="button_add" class="button-add-ability inline-block"
+            onmousedown="addMouseDown()" onmouseup="addMouseUp()"
+            onclick="window.location = 'modify_work_add.html'"></button>
 
     <button type="button" id="button_next" class="button-next-active inline-block"
-            onmousedown="nextMouseDown()" onmouseup="nextMouseUp()" onclick="window.location='modify_community.html'"></button>
+            onmousedown="nextMouseDown()" onmouseup="nextMouseUp()"
+            onclick="window.location='modify_community.html'"></button>
+
+    <div class="clear"></div>
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
 </div>
 
+    <!-- Template -->
+
+    <!-- container -->
+    <script id="tp-container" type="text/html">
+        <div>
+            <div class="div-timeline1">
+                <label id="date_year1" class="date-year">{0}</label>
+                <label class="year">年</label>
+                <div class="collapse-click inline-block" onclick="collapse({0})">
+                    <img id="collapse{0}" src="images/open.png" class="div-timeline1-spread"/>
+                </div>
+                <img src="images/clock.png"/>
+            </div>
+
+            <div class="div-timeline2"></div>
+    </script>
+
+    <!-- container's item -->
+    <script id="tp-container-item" type="text/html">
+        <div>
+            <div class="div-timeline3 white">
+                <div class="label-date inline-block">
+                    <label id="date_month1">{0}</label>
+                </div>
+                <div class="inline-block">
+                    <label>月</label>
+                </div>
+                <div class="label-date inline-block">
+                    <label id="date_day1">{1}</label>
+                </div>
+                <div class="inline-block">
+                    <label>日</label>
+                </div>
+                <img src="images/circle.png" class="timeline-circle"/>
+                <span id="work1" class="name-ability">
+                    <span class="work_position">{2}</span>
+                <button type="button" id="button_edit{5}" class="button-edit-personal"
+                        onmouseout="editMouseOut({5})" onmouseover="editMouseOver({5})" onclick="editWork('{6}')"></button>
+                </span>
+            </div>
+
+            <div>
+                <div class="div-timeline4 inline-block" id="vertical_line1" style="height: 200px;"></div>
+                <div class="inline-block div-timeline4-content">
+                    <span id="work_company1" class="others-ability">{3}</span>
+                    <br/>
+                    <div id="work_details{5}" class="details-ability">{4}</div>
+                    <br/>
+                    <a id="work_fulltext{5}" class="fulltext-ability" href="javascript:void(0);"
+                        onclick="showFullText('work',{5})">查看全文..</a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </script>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
-
-<script src="js/modify.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
+<script src="lib/bmob/bmob-min.js"></script>
+<script src="js/config/bmob_base.js"></script>
+<script src="js/utils/helper.js"></script>
+<script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_work.js"></script>
 
 </body>
 </html>

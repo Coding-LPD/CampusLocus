@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register - Campus Locus</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/login_and_register.css" rel="stylesheet">
     <link href="images/logo_28px.png" rel="shortcut icon">
 
@@ -66,21 +66,16 @@
                 <form role="form">
                     <div class="form-group">
                         <label class=" text-form font-white" style="margin-top: 2em;"
-                               for="mobilenumber">使用手机号码注册</label>
+                               for="mobilenumber">使用邮箱注册</label>
                         <br/>
 
-                        <div style="width: 82%; float: left;">
+                        <div style="width: 100%; float: left;">
                             <input class="form-control bg-clear" style="margin-top: 0.8em;" id="mobilenumber"
                                    type="text"
-                                   placeholder="手机号码"/>
+                                   placeholder="邮箱"/>
                             <input class="form-control bg-clear" style="margin-top: 0.45em;" id="verification"
-                                   type="text"
-                                   placeholder="验证码"/></div>
-
-                        <button class="btn btn-default bg-clear font-white"
-                                style="font-size: 0.5em; margin-top: 0.8em; margin-left: 1.2em">
-                            <div style="line-height: 1em;">获</br />取<br/>验<br/>证<br/>码</div>
-                        </button>
+                                   type="password"
+                                   placeholder="密码"/></div>
 
                         <button class="btn btn-warning bg-clear border-clear" id="register-btn"
                                 style="width: 100%; background-color: #EFE737; margin-top: 0.6em;">注册
@@ -112,10 +107,10 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/bmob/bmob-min.js"></script>
 <script src="js/config/bmob_base.js"></script>
 <script src="js/utils/helper.js"></script>

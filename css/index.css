@@ -27,14 +27,14 @@ body{
     border:0px;
     width:50px;height: 50px;
     background-image: url("../images/go_top.png");
-    position: fixed;right:10%;bottom:20%;
+    position: fixed;right:25px;bottom:50px;
 }
 #add{
     z-index: 101;
     border:0px;
     width:82px;height: 82px;
     background: url("../images/add_btn1.png");
-    position: fixed;right:9%;bottom:30%;
+    position: fixed;right:10px;bottom:100px;
 }
 
 #chat{

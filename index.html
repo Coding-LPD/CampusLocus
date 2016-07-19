@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="copyright" content="2016 campus locus All Rights Reserved.">
     <title>index</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
     <link href="css/index/index.css" rel="stylesheet">
     <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -54,34 +54,7 @@
                     <div class="rect4"></div>
                     <div class="rect5"></div>
                 </div>
-            </div>                    
-            <!--<div class="item">
-                <div class="author-info">
-                    <img class="author-head-img  v-center" src="" onerror="javascript:this.src='images/head.png'" />
-                    <p class="author-name">木子李</p>
-                </div>
-                <div class="locus">
-                    <button type="button" class="forward-btn  v-center"></button>
-                    <div class="timeline">
-                        <div class="big-point  v-center"></div>
-                        <hr class="v-center" />
-                        <div class="record  record-up  v-center">
-                            <div class="record-brief">
-                                <div class="title-bg title-bg-purple"></div>
-                                <p class="record-title">春之歌</p>
-                                <img class="touch-img  hide" src="images/touch.png" />
-                                <div class="record-description  purple-bg">
-                                    <div class="description-title">春之歌</div>
-                                    <div class="description-content text-ellipsis">春之歌让我受益匪浅！春之歌让我受益匪浅！春之歌让我受益匪浅！</div>
-                                </div>
-                            </div>
-                            <div class="small-point  purple-bg"></div>
-                            <p class="record-time">2016-06-04</p>
-                        </div>
-                    </div>
-                    <button type="button" class="backward-btn  v-center"></button>
-                </div>
-            </div>-->
+            </div>
         </div>
         <div class="user-panel">
             <div class="user-info">
@@ -90,8 +63,8 @@
             </div>
             <ul class="user-btn-list">
                 <li><a class="ask" href="#">请教</a><div id="ask-record">2</div></li>
-                <li><a class="chat" href="index_help.html">协作交流</a><div id="chat-record">3</div></li>
                 <li><a class="praise" href="#">点赞</a><div id="praise-record">5</div></li>
+                <li><a class="chat" href="javascript:alert('暂未开放功能');">协作交流</a><div id="chat-record">3</div></li>
                 <li><a class="publish" href="index_post.html">发表文章</a><div id="publish-record">5</div></li>
                 <li><a class="logout" href="#" id="logout-btn">退出</a></li>
             </ul>
@@ -123,11 +96,6 @@
                             <input type="text" id="feedback-title" />
                             <div class="clear"></div>
                         </li>
-                        <!--<li>
-                            <label for="user-id">用户ID：</label>
-                            <input type="text" id="user-id" />
-                            <div class="clear"></div>
-                        </li>-->
                         <li>
                             <label for="feedback-content">反馈内容：</label>
                             <textarea id="feedback-content" rows="5"></textarea>
@@ -305,28 +273,11 @@
         </li>
     </script>    
 
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/bmob/bmob-min.js"></script>
     <script src="js/utils/helper.js"></script>
     <script src="js/config/bmob_base.js"></script>    
     <script>
-        // 打开/关闭菜单的效果
-        $('.menu-link').click(function () {
-            $('.menu-cover').toggleClass('hide');
-            $('.menu').toggleClass('hide');
-            $('.guide').toggleClass('hide');
-            $(this).toggleClass('menu-link-close');
-        });
-
-        // 菜单按钮hover效果
-        $('.menu-btn-list a').mouseover(function () {
-            $(this).css('color', '#fff85f');
-            $(this).siblings('hr').css('border-top-color', '#fff85f');
-        }).mouseout(function () {
-            $(this).css('color', '#ffffff');
-            $(this).siblings('hr').css('border-top-color', '#ffffff');
-        });
-
         // 类别选择效果
         $('.category-list li').click(function () {
             $(this).addClass('selected').siblings().removeClass('selected');
@@ -338,8 +289,9 @@
             $('.pop-up').hide();
         });
     </script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>    
     <script src="js/index/index.js"></script>
-    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 
 </html>

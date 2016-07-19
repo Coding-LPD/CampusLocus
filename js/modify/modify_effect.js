@@ -88,16 +88,16 @@ function editMouseOver(num) {
     document.getElementById("button_edit" + num).title = "编辑";
 }
 
-function editAbility() {
-    window.location = "modify_ability_edit.html";
+function editAbility(id) {
+    location.href = 'modify_ability_edit.html?id=' + id;
+}    
+
+function editWork(id) {
+    window.location = "modify_work_edit.html?id=" + id;
 }
 
-function editWork() {
-    window.location = "modify_work_edit.html";
-}
-
-function editCommunity() {
-    window.location = "modify_community_edit.html";
+function editCommunity(id) {
+    window.location = "modify_community_edit.html?id=" + id;
 }
 
 function showFullText(modify,num) {
@@ -136,9 +136,9 @@ function collapse(year) {
     /*滑动效果*/
     $('div[id^=' + year + ']').slideToggle();
 
-    /*$("#collapse" + year).attr('src',$("#collapse" + year).attr('src')=='images/open.png'?'images/close.png':'images/open.png');*/
+    $("#collapse" + year).attr('src',$("#collapse" + year).attr('src')=='images/open.png'?'images/close.png':'images/open.png');
 
-    $("#collapse" + year).rotate(45);
+    /*$("#collapse" + year).rotate(45);*/
 
     /*toggle(
         function() {

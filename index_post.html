@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="copyright" content="2016 campus locus All Rights Reserved.">
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
-    <link href="css/nav.css" rel="stylesheet">
-    <link href="css/footer.css" rel="stylesheet">
     <link href="css/add.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet" />
     <link href="css/index_post.css" rel="stylesheet" />
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/index_chat.js" type="text/javascript"></script>
     <title>Post - Campus Locus</title>
     <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
@@ -20,65 +16,83 @@
 </head>
 
 <body class="f0f0f0">
-    <div id="nav_bg">
-        <div id="nav_logo"></div>
-        <div id="nav_search" class=" panel">
-            <input id="search_input" class="bg-clear center boder_clear" name="search" type="text" placeholder=" 找工作实习试试">
-            <button id="submit_btn" class="boder_clear" name="Submit" type="button"></button>
-        </div>
-        <a href=#>
-            <div id="nav_menu_yellow" onmousemove="nav_menu_yellow_move()" onmouseout="nav_menu_yellow_out()">
-                <div id="nav_menu_close"></div>
+    <div class="header">
+        <div class="nav">
+            <img class="logo" src="images/Logo.png" />
+            <div class="search-box v-center">
+                <button type="button" class="search-btn  v-center" id="guide-search-btn"></button>
+                <input type="text" class="search" id="guide-search" placeholder="找工作实习试试"/>
             </div>
-        </a>
+            <button type="button" class="menu-link yellow-btn"></button>
+        </div>
     </div>
 
-    <div class="post-container" id="post-container"></div>
-    <div class="data-tip" id="data-tip">
-        <button type="button" class="load-more hide">加载更多&nbsp;&nbsp;>></button>
-        <div class="no-more-data-tip hide">全部加载完毕</div>
-        <div class="spinner">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
+    <div class="menu hide">
+        <h1 class="title">Campus Locus</h1>
+        <ul class="menu-btn-list">
+            <li><a href="index.html">首页</a><hr /></li>
+            <li><a href="modify_personal.html">个人资料</a><hr /></li>
+            <li><a href="index_record.html">交流记录</a><hr /></li>
+            <li><a href="#">干货</a><hr /></li>
+        </ul>
+    </div>
+
+    <div class="post-container" id="post-container">
+        <div class="data-tip" id="data-tip">
+            <button type="button" class="load-more hide">加载更多&nbsp;&nbsp;>></button>
+            <div class="no-more-data-tip hide">全部加载完毕</div>
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
         </div>
-    </div>    
+    </div>
 
     <a href="#top"><button id="go_up"></button></a>
     <button id="add" class="boder_clear"></button>
-
-    <div id="footer">
-        <div id="footer_left">
-            <div id="footer_aboutus" class=" white font_fam footer_left">
-                <div class="paddingbottom font_15"> <strong>关于校园轨迹网</strong> </div>
-                <div class="b4 font_10 font_fam_con">
-                    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈<br> 哈哈哈哈哈哈哈哈哈哈
-                    <br> 哈哈哈哈
-                    <br>
+    <div class="footer">
+        <div class="content">
+            <div class="product-info">
+                <div class="about">
+                    <h4 class="title">关于校园轨迹网</h4>
+                    <p class="about-content">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+                </div>
+                <div class="contact">
+                    <h4 class="title">联系我们</h4>
+                    <ul class="contact-list">
+                        <li>客服邮箱：<span class="value">xxxx@163.com</span></li>
+                        <li>商务合作：<span class="value">xxxx@163.com</span></li>
+                        <li>客服QQ：<span class="value">xxxx@163.com</span></li>
+                    </ul>
                 </div>
             </div>
-            <div id="footer_contactus" class=" white font_fam footer_left">
-                <div class="paddingbottom font_15"><strong>联系我们</strong></div>
-                <div class="font_fam_con font_10 ">
-                    <span class="b4">客服邮箱：</span><span class="fff85f">xxxx@163.com</span>&nbsp;
-                    <span class="b4">商务合作：</span><span class="fff85f">xxxx@163.com</span>&nbsp;
-                    <span class="b4">客服qq：</span><span class="fff85f">1234567890</span>
-                </div>
+            <div class="feedback">
+                <h4 class="title">意见反馈</h4>
+                <form class="feedback-form">
+                    <ul>
+                        <li>
+                            <label for="feedback-title">标题：</label>
+                            <input type="text" id="feedback-title" />
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <label for="feedback-content">反馈内容：</label>
+                            <textarea id="feedback-content" rows="5"></textarea>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <button type="button" class="submit-btn yellow-btn" id="feedback-submit-btn">确认提交</button>
+                        </li>
+                    </ul>    
+                </form>
             </div>
+            <div class="clear"></div>
         </div>
-        <div>
-            <hr>
-        </div>
-        <div>
-            <div id="footer_feedback" class="font_15 white"><strong>意见反馈</strong></div>
-            <div id="footer_title_div" class="font_10 b4">标题：<input id="footer_title" class="ababab boder_clear black footer_input"> </div>
-            <div id="footer_userID_div" class="font_10 b4">用户ID：<input id="footer_userID" class="ababab boder_clear black footer_input"></div>
-            <div id="footer_context_div" class="font_10 b4">反馈内容：<textarea id="footer_context" class="ababab boder_clear black"></textarea></div>
-            <div><button id="footer_send" class="bg_fff85f boder_clear font_9" onmousemove="footer_send_move()" onmouseout="footer_send_out()">确认提交</button></div>
-        </div>
-        <div id="copyright" class="center font_9"><small>Copyright &copy; 2016 campus locus All Rights Reserved.</small></div>
+        <hr />
+        <h5 class="copyright">Copyright &copy; 2016 campus locus All Rights Reserved.</h5>
     </div>
 
 
@@ -108,6 +122,7 @@
         </div>
     </div>
 
+    <div class="cover menu-cover hide"></div>
     <div class="cover pop-up-cover"></div>
 
     <!-- Template -->
@@ -124,21 +139,24 @@
             <hr id="post_hr1" class="color99 post_hr">
             <span id="post_label1" class="colorc7 post_label"><img src="images/talent.png"> <span id="post_labelname1" class="post_labelname">{6}</span>
                 <span id="post_labelright1" class="post_labelright">
-                    <span id="post_ask1">请教</span> <span id="post_ask1_number">{7}</span>  &nbsp; &nbsp; &nbsp;&nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;
-                    <span id="post_talk1">协作交流</span><span id="post_talk1_number">{8}</span>   &nbsp; &nbsp; &nbsp;&nbsp;| &nbsp; &nbsp; &nbsp; &nbsp;
-                    <span id="post_like1">点赞</span><span id="post_like1_number">{9}</span>
+                    <span id="post_ask1">请教</span> <span id="post_ask1_number">{7}</span>&nbsp;|&nbsp;
+                    <span id="post_talk1">协作交流</span> <span id="post_talk1_number">{8}</span>&nbsp;|&nbsp;
+                    <span id="post_like1">点赞</span> <span id="post_like1_number">{9}</span>
                 </span>
             </span>
         </div>
     </script>
 
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="lib/jquery/jquery.min.js"></script>    
     <script src="lib/bmob/bmob-min.js"></script>
+    <script src="js/index_chat.js" type="text/javascript"></script>
     <script src="js/utils/helper.js"></script>
     <script src="js/config/bmob_base.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
     <script src="js/index_post.js"></script>
     <script>
-        // 选择标签效果
+        // 文章编辑时选择标签效果
         $('#label-list label').click(function () {
             $(this).addClass('selected').siblings('label').removeClass('selected');            
         });
@@ -155,8 +173,6 @@
             $('.pop-up').hide();
         });
     </script>
-
-    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 
 </html>

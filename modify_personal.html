@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Personal - Campus Locus</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/modify.css" rel="stylesheet">
     <link href="images/logo_28px.png" rel="shortcut icon">
 
@@ -37,10 +37,10 @@
 <div class="margin-clear padding-clear height-menu width-full" style="margin-bottom: 0em">
 
     <div class="modify-unselected inline-block" style="margin-left: 59%">
-        <a href="modify_ability.html">才艺才能</a>
+        <a href="modify_work.html">工作实习</a>
     </div>
     <div class="modify-unselected inline-block" style="margin-left: 5%">
-        <a href="modify_work.html">工作实习</a>
+        <a href="modify_community.html">社团经历</a>
     </div>
     <div class="modify-selected center">
         <a href="modify_personal.html" style="color: rgb(255,204,0);">个人信息</a>
@@ -93,14 +93,14 @@
         <br />
     </form>
     <button type="button" id="button_next" class="button-next-active inline-block" onmousedown="nextMouseDown()" onmouseup="nextMouseUp()"
-            onclick="window.location='modify_ability.html'"></button>
+            onclick="window.location='modify_work.html'"></button>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/bmob/bmob-min.js"></script>
 <script src="js/config/bmob_base.js"></script>
 <script src="js/utils/helper.js"></script>
@@ -117,6 +117,5 @@
         document.getElementById("button_edit").title = "编辑";
     }
 </script>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>

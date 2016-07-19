@@ -1,7 +1,7 @@
 
 (function () {
 
-    var jqContainer,
+    var jqContainer, jqEmptyTip, jqLoading,
         currentUser;
 
     $(document).ready(function () {
@@ -11,12 +11,20 @@
         currentUser = BmobBase.User.current();
                 
         getAbility(currentUser).then(function (data) {
-            createAbilityView(data, jqContainer);
+            if (data.length <= 0) {            
+                jqEmptyTip.removeClass('hide');
+                jqContainer.addClass('hide');
+                jqLoading.addClass('hide');
+            } else {
+                createAbilityView(data, jqContainer);
+            }
         });
     });
 
     function init() {
         jqContainer = $('#container');
+        jqEmptyTip = $('#empty-tip');
+        jqLoading = $('.spinner');
     }
 
     function getAbility(user) {
@@ -53,6 +61,7 @@
             jqParent.append(container);
             lastTime = data[i].get('time');
         }
+        jqLoading.addClass('hide');
     }
 
     function createContainer(year) {
@@ -65,15 +74,16 @@
     }
 
     function createItem(index, ability) {
-        var e, params;
+        var e, jqEle, params;
 
         params = [ability.get('time').getMonth()+1, ability.get('time').getDate(), ability.get('title'),
                   ability.get('partner'), ability.get('nature'), ability.get('result'), 
-                  ability.get('description'), index + 1];
+                  ability.get('description'), index + 1, ability.id];
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
+        jqEle = $(e);
 
         return $(e);
     }
-
+    
 })()

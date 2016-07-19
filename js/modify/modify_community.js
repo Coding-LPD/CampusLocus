@@ -1,7 +1,7 @@
 
 (function () {
 
-    var jqContainer,
+    var jqContainer, jqEmptyTip, jqLoading,
         currentUser;
 
     $(document).ready(function () {
@@ -11,12 +11,20 @@
         currentUser = BmobBase.User.current();
 
         getSocial(currentUser).then(function (data) {
-            createSocialView(data, jqContainer)
+            if (data.length <= 0) {            
+                jqEmptyTip.removeClass('hide');
+                jqContainer.addClass('hide');
+                jqLoading.addClass('hide');
+            } else {
+                createSocialView(data, jqContainer)
+            }
         });
     }); 
 
     function init() {
         jqContainer = $('#container');
+        jqEmptyTip = $('#empty-tip');
+        jqLoading = $('.spinner');
     }
 
     function getSocial(user) {
@@ -53,6 +61,7 @@
             jqParent.append(container);
             lastTime = data[i].get('time');
         }
+        jqLoading.addClass('hide');
     }
 
     function createContainer(year) {
@@ -68,7 +77,8 @@
         var e, params;
 
         params = [social.get('time').getMonth()+1, social.get('time').getDate(), social.get('title'),
-                  social.get('association'), social.get('position'), social.get('description'),index + 1];
+                  social.get('association'), social.get('position'), social.get('description'),
+                  index + 1, social.id];
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 

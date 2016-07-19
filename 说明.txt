@@ -1,9 +1,0 @@
-个人信息：
-personal显示信息，按右上方的编辑按钮进入personal_edit页面
-personal_edit编辑信息，有验证手机的灰色的勾，通过验证后要变成黄色（没写，图片在文件夹里），按取消后返回personal页面，按确认提交表单后同样跳转personal（跳转没写），点击头像可以修改头像
-
-才艺才能：
-ability提示添加才能，按右上角添加按钮后跳转到ability_add页面
-ability_add添加才能，按取消返回ability（没有填写才能时）或ability_finished（已经有才能），按保存跳转到ability_finished，判断有没有填写才能和保存跳转都没写，现在默认跳转到ability页面提示添加才能
-ability_finished显示已经填写的才能，按右上角添加按钮跳转到ability_add页面，按编辑按钮跳转到ability_edit页面
-ability_edit编辑才能详情，在表单中显示对应才能详情，让用户修改

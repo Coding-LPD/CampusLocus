@@ -2,6 +2,7 @@
 (function () {
 
     var jqTitle, jqTime, jqNature, jqResult, jqDescription, jqPartner, jqSubmit, jqCancel,
+        editItem,
         currentUser;
 
     $(document).ready(function () {
@@ -9,6 +10,8 @@
         checkLogin();
         currentUser = BmobBase.User.current();
         init();
+        var id = queryString('id');
+        getData(id);
     });
 
     function init() {
@@ -28,6 +31,21 @@
         jqCancel.click(function (e) {
             e.preventDefault();
             cancel();
+        });
+    }
+
+    function getData(id) {
+        var query = new Bmob.Query(BmobBase.Ability);
+
+        query.get(id).then(function (r) {            
+            jqTitle.val(r.get('title'));
+            jqNature.val(r.get('nature'));
+            jqResult.val(r.get('result'));
+            jqDescription.val(r.get('description'));
+            jqPartner.val(r.get('partner'));
+            jqTime.val(getDateString(r.get('time')));
+            jqTime.change();
+            editItem = r;
         });
     }
 
@@ -64,21 +82,16 @@
             jqDescription.focus();
             return;
         }
-
-        var owner = BmobBase.User.createOnlyId(currentUser.id),
-            ability = new BmobBase.Ability();
             
-        ability.set('title', title);
-        ability.set('partner', partner);
-        ability.set('nature', nature);
-        ability.set('result', result);
-        ability.set('description', description);
-        ability.set('type', BmobBase.Record.Type.Ability);
-        ability.set('owner', owner);
-        ability.set('time', new Date(time));
+        editItem.set('title', title);
+        editItem.set('partner', partner);
+        editItem.set('nature', nature);
+        editItem.set('result', result);
+        editItem.set('description', description);
+        editItem.set('time', new Date(time));        
 
-        ability.save().then(function (r) {
-            alert('保存成功');
+        editItem.save().then(function (r) {
+            alert('修改成功');
             location.replace('modify_ability.html');
         }, function (error) {
             LogHelper.error('save ability', error);
@@ -93,16 +106,15 @@
             description = jqDescription.val(),
             partner = jqPartner.val();
 
-        if (!StringHelper.isEmpty(title)   || !StringHelper.isEmpty(nature)      ||
-            !StringHelper.isEmpty(result)  || !StringHelper.isEmpty(description) ||
-            !StringHelper.isEmpty(partner)) {
-
-            if (confirm('您有填写的数据，确定要取消吗？')) {
+        if (title === editItem.get('title')    &&  nature === editItem.get('nature')           &&
+            result === editItem.get('result')  &&  description === editItem.get('description') &&
+            partner === editItem.get('partner')) {
+            location.replace(document.referrer);
+        } else {
+            if (confirm('数据有修改，确定要取消吗？')) {
                 location.replace(document.referrer);
             }
-        } else {
-            location.replace(document.referrer);
-        }
+        } 
     }
 
 })()

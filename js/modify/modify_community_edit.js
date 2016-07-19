@@ -2,6 +2,7 @@
 (function () {
 
     var jqTitle, jqAssociation, jqPosition, jqDescription, jqTime, jqSubmit, jqCancel,
+        editItem,
         currentUser;
 
     $(document).ready(function () {
@@ -9,6 +10,8 @@
         checkLogin();
         init();
         currentUser = BmobBase.User.current();
+        var id = queryString('id');
+        getData(id);
     });
 
     function init() {
@@ -27,6 +30,20 @@
         jqCancel.click(function (e) {
             e.preventDefault();
             cancel();
+        });
+    }
+
+    function getData(id) {
+        var query = new Bmob.Query(BmobBase.Social);
+
+        query.get(id).then(function (r) {            
+            jqTitle.val(r.get('title'));
+            jqAssociation.val(r.get('association'));
+            jqPosition.val(r.get('position'));
+            jqDescription.val(r.get('description'));
+            jqTime.val(getDateString(r.get('time')));
+            jqTime.change();
+            editItem = r;
         });
     }
 
@@ -57,20 +74,15 @@
             jqDescription.focus();
             return;
         }      
-
-        var owner = BmobBase.User.createOnlyId(currentUser.id),
-            social = new BmobBase.Social();
             
-        social.set('title', title);
-        social.set('position', position);
-        social.set('association', association);
-        social.set('description', description);
-        social.set('time', new Date(time));
-        social.set('type', BmobBase.Record.Type.Social);
-        social.set('owner', owner); 
+        editItem.set('title', title);
+        editItem.set('position', position);
+        editItem.set('association', association);
+        editItem.set('description', description);
+        editItem.set('time', new Date(time));
 
-        social.save().then(function (r) {
-            alert('保存成功');
+        editItem.save().then(function (r) {
+            alert('修改成功');
             location.replace('modify_community.html');
         }, function (error) {
             LogHelper.error('save social', error);
@@ -84,14 +96,13 @@
             position = jqPosition.val(),
             description = jqDescription.val();
 
-        if (!StringHelper.isEmpty(title)     || !StringHelper.isEmpty(association) ||
-            !StringHelper.isEmpty(position)  || !StringHelper.isEmpty(description)) {
-
-            if (confirm('您有填写的数据，确定要取消吗？')) {
+        if (title === editItem.get('title')       && association === editItem.get('association') &&
+            position === editItem.get('position') && description === editItem.get('description')) {
+            location.replace(document.referrer);
+        } else {
+            if (confirm('数据有修改，确定要取消吗？')) {
                 location.replace(document.referrer);
             }
-        } else {
-            location.replace(document.referrer);
         }
     }
 

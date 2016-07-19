@@ -2,6 +2,7 @@
 (function () {
 
     var jqTitle, jqCompany, jqTime, jqDescription, jqSubmit, jqCancel,
+        editItem,
         currentUser;
 
     $(document).ready(function () {
@@ -9,6 +10,8 @@
         checkLogin();        
         init();
         currentUser = BmobBase.User.current();
+        var id = queryString('id');
+        getData(id);
     });
 
     function init() {
@@ -27,6 +30,19 @@
             e.preventDefault();
             cancel();
         })
+    }
+
+    function getData(id) {
+        var query = new Bmob.Query(BmobBase.Work);
+
+        query.get(id).then(function (r) {            
+            jqTitle.val(r.get('title'));
+            jqCompany.val(r.get('company'));
+            jqDescription.val(r.get('description'));
+            jqTime.val(getDateString(r.get('time')));
+            jqTime.change();
+            editItem = r;
+        });
     }
 
     function save() {
@@ -50,19 +66,14 @@
             jqDescription.focus();
             return;
         }
-
-        var owner = BmobBase.User.createOnlyId(currentUser.id),
-            work = new BmobBase.Work();
             
-        work.set('title', title);
-        work.set('company', company);
-        work.set('description', description);
-        work.set('time', new Date(time));
-        work.set('type', BmobBase.Record.Type.Work);
-        work.set('owner', owner);
+        editItem.set('title', title);
+        editItem.set('company', company);
+        editItem.set('description', description);
+        editItem.set('time', new Date(time));
 
-        work.save().then(function (r) {
-            alert('保存成功');
+        editItem.save().then(function (r) {
+            alert('修改成功');
             location.replace('modify_work.html');
         }, function (error) {
             LogHelper.error('save work', error);
@@ -75,14 +86,13 @@
             company = jqCompany.val(),
             description = jqDescription.val();
 
-        if (!StringHelper.isEmpty(position)     || !StringHelper.isEmpty(company) ||
-            !StringHelper.isEmpty(description)) {
-
+        if (position === editItem.get('position') && company === editItem.get('company') &&
+            description === editItem.get('description')) {
+            location.replace(document.referrer);
+        } else {
             if (confirm('您有填写的数据，确定要取消吗？')) {
                 location.replace(document.referrer);
             }
-        } else {
-            location.replace(document.referrer);
         }
     }
 

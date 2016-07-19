@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Work - Campus Locus</title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/modify.css" rel="stylesheet">
     <link href="images/logo_28px.png" rel="shortcut icon">
 
@@ -61,7 +61,7 @@
     <div class="div-timeline inline-block">
 
         <div class="div-timeline1" style="width: auto">
-            <label class="date-year">2016</label>
+            <label id="date_year" class="date-year">2016</label>
             <label class="year">年</label>
             <img src="images/open.png" class="div-timeline1-spread" />
             <img src="images/clock.png" />
@@ -71,13 +71,13 @@
 
         <div class="div-timeline3 white">
             <div class="label-date inline-block">
-                <label id="date_month">6</label>
+                <label id="date_month">1</label>
             </div>
             <div class="inline-block">
                 <label id="month">月</label>
             </div>
             <div class="label-date inline-block">
-                <label id="date_day">10</label>
+                <label id="date_day">1</label>
             </div>
             <div class="inline-block">
                 <label id="day">日</label>
@@ -95,6 +95,17 @@
         <br />
         <textarea id="work_details_input" rows="6" cols="66" placeholder="记录人生轨迹上的点点滴滴.."></textarea>
         <br />
+
+        <div class="date" id="date_div">
+            <label id="date_year_select" class="date-year-select">2016</label>
+            <label>-</label>
+            <label id="date_month_select" class="date-mad-select">1</label>
+            <label>-</label>
+            <label id="date_day_select" class="date-mad-select">1</label>
+            <img src="images/calendar.png" />
+        </div>
+
+        <input type="date" id="date_select" class="date inline-block" onchange="selectDate()" />
         <br />
         <button type="submit" id="button_submit" class="button-submit-ability"
                 onmouseover="submitMouseOver()"  onmouseout="submitMouseOut()">保存</button>
@@ -107,15 +118,15 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src="lib/jquery/jquery.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.js"></script>
+<script src="lib/bootstrap/bootstrap.min.js"></script>
 <script src="lib/bmob/bmob-min.js"></script>
 <script src="js/config/bmob_base.js"></script>
 <script src="js/utils/helper.js"></script>
 <script src="js/modify/modify_effect.js"></script>
+<script src="js/modify/modify_date.js"></script>
 <script src="js/modify/modify_work_add.js"></script>
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </body>
 </html>
