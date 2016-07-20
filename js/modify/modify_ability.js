@@ -78,7 +78,7 @@
 
         params = [ability.get('time').getMonth()+1, ability.get('time').getDate(), ability.get('title'),
                   ability.get('partner'), ability.get('nature'), ability.get('result'), 
-                  ability.get('description'), index + 1, ability.id];
+                  ability.get('description'), index + 1, ability.id, ability.get('time').getFullYear()];
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
         jqEle = $(e);

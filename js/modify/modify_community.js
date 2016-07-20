@@ -78,7 +78,7 @@
 
         params = [social.get('time').getMonth()+1, social.get('time').getDate(), social.get('title'),
                   social.get('association'), social.get('position'), social.get('description'),
-                  index + 1, social.id];
+                  index + 1, social.id, social.get('time').getFullYear()];
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 

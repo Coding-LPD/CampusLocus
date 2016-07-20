@@ -272,6 +272,10 @@ ul {
     width: 70%;
 }
 
+.about-content {
+    text-indent: 2em;
+}
+
 .contact {
     margin-top: 40px;
 }

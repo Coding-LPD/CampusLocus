@@ -170,6 +170,9 @@
         getMoreMessage(record);
     }
 
+    /**
+     * 显示本地数据(当前策略为一次性获取远程所有数据，分页显示本地数据)
+     */
     function showLocalRecord() {
         DataTipHelper.showLoading(jqRecordDataTip);
 

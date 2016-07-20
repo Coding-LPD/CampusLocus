@@ -76,7 +76,7 @@
         var e, params;
 
         params = [work.get('time').getMonth()+1, work.get('time').getDate(), work.get('title'),
-                  work.get('company'), work.get('description'), index + 1, work.id];                  
+                  work.get('company'), work.get('description'), index + 1, work.id, work.get('time').getFullYear()];                  
         e = $('#tp-container-item').html();
         e = stringReplace(e, params);
 

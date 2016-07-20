@@ -134,7 +134,7 @@ function showFullText(modify,num) {
 
 function collapse(year) {
     /*滑动效果*/
-    $('div[id^=' + year + ']').slideToggle();
+    $('div[class^=year' + year + ']').slideToggle();
 
     $("#collapse" + year).attr('src',$("#collapse" + year).attr('src')=='images/open.png'?'images/close.png':'images/open.png');
 
